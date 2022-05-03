@@ -24,7 +24,7 @@ def load_csmodel():
         r'.\regulation_analysis_for_yeast9\get_fluxandproteoimcs\output\modelNH4_Nlim_035.xml')
     modelphe_Nlim_01 = cobra.io.read_sbml_model(
         r'.\regulation_analysis_for_yeast9\get_fluxandproteoimcs\output\modelphe_Nlim_01.xml')
-    return modelphe_Nlim_01, modelile_Nlim_01, modelNH4_Nlim_035, \
-           modelNH4_Nlim_030, modelNH4_Nlim_018, modelNH4_Nlim_013, \
-           modelCN115, modelCN50, modelCN30, modelNH4_Nlim_01, \
+    return modelCN115, modelCN50, modelCN30, modelphe_Nlim_01, \
+           modelile_Nlim_01, modelNH4_Nlim_035, modelNH4_Nlim_030, \
+           modelNH4_Nlim_018, modelNH4_Nlim_013, modelNH4_Nlim_01, \
            modelNH4_Nlim_005, modelgln_Nlim_01
