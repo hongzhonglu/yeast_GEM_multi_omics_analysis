@@ -1,9 +1,24 @@
+###########################################################################
+# Description
+# get histogram
+###########################################################################
+# Parameter
+# reaction_slope: A dictionary.
+#                 Keys are reactionIDs,
+#                 Values are slopes.
+# savename:       file name you wanna save.
+###########################################################################
+# Output
+# histogram figure
+###########################################################################
+
 import seaborn as sns
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+import os
 
-def histogram(reaction_slope):
+def histogram(reaction_slope, savename):
     data = [d for d in reaction_slope.values() if d != 'nan']
     sns.set(style="dark")
     sns.distplot(data,
@@ -23,6 +38,7 @@ def histogram(reaction_slope):
              }
     plt.xlabel('ρ', font1)
     plt.xlabel('Density', font1)
-    plt.title('ρ distribution of all reactions', font2)
-    plt.savefig('ρ distribution of all reactions.png')
+    plt.title(savename, font2)
+    s_name = savename + '.png'
+    plt.savefig(s_name)
     plt.show()

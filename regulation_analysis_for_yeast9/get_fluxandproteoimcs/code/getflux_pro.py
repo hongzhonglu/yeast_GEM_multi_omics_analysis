@@ -1,9 +1,16 @@
-# get flux data by simpling or pFBA
-# read proteomics data
-# [modelphe_Nlim_01, modelile_Nlim_01, modelNH4_Nlim_035, \
-#            modelNH4_Nlim_030, modelNH4_Nlim_018, modelNH4_Nlim_013, \
-#            modelCN115, modelCN50, modelCN30, modelNH4_Nlim_01, \
-#            modelNH4_Nlim_005, modelgln_Nlim_01] = load_csmodel
+###########################################################################
+# Description
+# get flux data by simpling or pFBA.
+# ignore 0 flux and protein more than 7 out of 12 condition of the reaction.
+###########################################################################
+# Parameter
+# model: The model, where the flux come from.
+# analysis: The algorithm to get the flux, pFBA or sample.
+###########################################################################
+# Output
+# flux_gene_value: A dataframe, whose index is reactionID and
+# column is flux values and gene name
+###########################################################################
 
 import cobra
 import pandas as pd
@@ -43,6 +50,19 @@ def getflux(model, analysis):
     flux_gene_value.index = flux_gene_value.loc[:, 'reactionID']
     return flux_gene_value
 
+###########################################################################
+# Description
+# get proteoimcs data from
+# 'https://doi.org/10.1038/s41467-020-15749-0' and
+# 'https://doi.org/10.7554/eLife.65722'.
+###########################################################################
+# Parameter
+# condition: The condition of the cs-model.
+###########################################################################
+# Output
+# pro_gene_values: A dataframe, whose index is gene name and
+# column is protein concentration
+###########################################################################
 
 def getpro(condition):
     # get proteomics data under specific condition

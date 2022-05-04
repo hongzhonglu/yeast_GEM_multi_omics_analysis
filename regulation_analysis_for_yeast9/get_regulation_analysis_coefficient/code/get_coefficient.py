@@ -1,7 +1,15 @@
-###########################################################
+###########################################################################
 # Description
 # get coefficient of the chosen reaction
-# ignore 0 flux and protein more than 7 out of 12 condition
+# ignore 0 flux and protein more than 7 out of 12 condition of the reaction
+###########################################################################
+# Parameter
+# flux_prot: A dictionary. The output of 'paring'.
+###########################################################################
+# Output
+# slope: coefficient of the chosen reaction.
+###########################################################################
+
 import numpy as np
 import scipy.stats as st
 def get_coefficient(flux_prot):
