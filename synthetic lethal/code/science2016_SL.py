@@ -1,3 +1,9 @@
+#############################################
+# predict synthetic lethal
+# Data: Michael Costanzo et al., Science(2017)
+
+
+
 import cobra
 import pandas as pd
 from cobra.flux_analysis import double_gene_deletion
