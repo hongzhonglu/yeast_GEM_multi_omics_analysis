@@ -1,13 +1,19 @@
+##############################################
+# get pFBA flux of 163 single cell model
+# first run "singlecellmodel.m" to get single cell model
 import pandas as pd
 import cobra
 import os
-file = r'singlecell/output'
+
+os.chdir('..')
+
+file = '../singlecell/output/scmodel'
 filename = os.listdir(file)
 filepath = []
 for f in filename:
     filepath.append(file + '/' + f)
 
-model8 = cobra.io.read_sbml_model(r'singlecell/data/yeast-GEM.xml')
+model8 = cobra.io.read_sbml_model('../singlecell/data/yeast-GEM.xml')
 pfba_so = cobra.flux_analysis.pfba(model8)
 
 rxnid = [i.id for i in model8.reactions]
@@ -31,20 +37,9 @@ for s, en in zip(filepath, expid):
     rxnnum.append(len(tempmodel.reactions))
     metnum.append(len(tempmodel.metabolites))
 
-#for s, en in zip(filepath, expid):
-#   print('processing model Number' + str(c))
-#    tempmodel = cobra.io.read_sbml_model(s)
-#    rxnnum.append(len(tempmodel.reactions))
-#    metnum.append(len(tempmodel.metabolites))
-#    c += 1
 pca_data = pca_data.T
 rrr = [r/20 for r in rxnnum]
 mmm = [m/20 for m in metnum]
 pca_data.insert(0, 'rxnnum/20', rrr)
 pca_data.insert(0, 'metnum/20', mmm)
-pca_data.to_excel('singlecell/output/pfba_flux.xlsx')
-
-#pca_data = pca_data.drop('mmm', axis=1)
-#pca_data = pca_data.drop('rrr', axis=1)
-
-# 可视化
+pca_data.to_excel('../singlecell/output/pfba_flux.xlsx')

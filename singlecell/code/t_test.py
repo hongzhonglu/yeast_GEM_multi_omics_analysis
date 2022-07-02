@@ -1,11 +1,19 @@
+##########################################
+# get "t-test.jpg"
+# compute the p value of the same reaction flux between stress and unstress condition
+# first run "get_pfba_flux.py" to compute flux data "pfba_flux.xlsx"
+
 from scipy import stats
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
-pathway = pd.read_table(r'singlecell/data/Rxn_unique_subsystem.tsv')
+os.chdir('..')
+
+pathway = pd.read_table('../singlecell/data/uniqueSubsystems.tsv')
 pathway.index = pathway.loc[:, 'ID']
-t_data = pd.read_excel('singlecell/output/pfba_flux.xlsx')
+t_data = pd.read_excel('../singlecell/output/pfba_flux.xlsx')
 t_data = t_data.drop(0, axis=1)
 t_data = t_data.drop('metnum/20', axis=1)
 t_data = t_data.drop('rxnnum/20', axis=1)
@@ -25,7 +33,7 @@ for te in none_zero_l:
     # 独立2个样本t检验
     sample1 = np.asarray(stress.loc[:, te])
     sample2 = np.asarray(unstress.loc[:, te])
-    r = stats.ttest_ind(sample1, sample2, )
+    r = stats.ttest_ind(sample1, sample2)
     rxn_p[te] = r.pvalue
     if r.pvalue <= 0.05:
         p_xiao[te] = r.pvalue
@@ -37,7 +45,7 @@ xiao_path_l = [i for i in xiao_path.values()]
 set01 = set(xiao_path_l)
 dict01 = {}
 for item in set01:
-    dict01.update({item:xiao_path_l.count(item)})
+    dict01.update({item: xiao_path_l.count(item)})
 fenlei = pd.Series(dict01)
 print('总计：' + str(len(none_zero_l)) + "个非零通量\n"
       + str(len(p_xiao)) + '个差异显著的通量')
@@ -46,16 +54,40 @@ xiao_path_S = pd.Series(xiao_path)
 stress_mean = stress.mean()
 unstress_mean = unstress.mean()
 
-stress_mean.to_excel(r'singlecell/output/stress_flux_mean.xlsx')
-unstress_mean.to_excel(r'singlecell/output/unstress_flux_mean.xlsx')
-xiao_path_S.to_excel(r'singlecell/output/path_analysis.xlsx')
-fenlei.to_excel(r'singlecell/output/t-test_0.05.xlsx')
+# mean flux of each rxn(salt stress)
+stress_mean.to_excel('../singlecell/output/stress_flux_mean.xlsx')
+# mean flux of each rxn(unstress)
+unstress_mean.to_excel('../singlecell/output/unstress_flux_mean.xlsx')
+# rxn(p < 0.05) subsystem
+xiao_path_S.to_excel('../singlecell/output/path_analysis.xlsx')
+fenlei.to_excel('../singlecell/output/t-test_0.05.xlsx')
 
-fenlei_T = pd.read_excel(r'singlecell/output/t-test_0.05.xlsx',
-                         sheet_name='Sheet2')
-bar_data = fenlei_T.loc[0:12, 0]
-bar_name = fenlei_T.loc[0:12, 'subsystem']
+# figure
+name_l = ['p value > 0.05', 'p value ≤ 0.05']
+values = [len(none_zero_l) - len(p_xiao), len(p_xiao)]
+font1 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 23,
+         }
+font2 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 20,
+         }
+font3 = {'family': 'Times New Roman',
+         'weight': 'normal',
+         'size': 12,
+         }
 
-plt.rcParams['figure.figsize'] = (8.0, 4.0)
-plt.barh(range(len(bar_data)), bar_data, tick_label=bar_name)
+plt.subplots(figsize=(8, 6))
+plt.pie(values,
+        labeldistance=1,
+        wedgeprops={'linewidth': 3, 'edgecolor': 'white'},
+        colors=['#64F0E1', '#F09165'],
+        textprops=font2)
+plt.title('t-test of nonezero flux', fontdict=font1)
+plt.legend(name_l,
+           bbox_to_anchor=(0.9, 0.9),
+           prop=font3)
+# 69.6% 30.4%
+plt.savefig('../singlecell/output/t-test.jpg')
 plt.show()
