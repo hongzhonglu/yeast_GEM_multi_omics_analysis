@@ -26,6 +26,7 @@ SGD.index = SGD.loc[:, 'Systematic_name']
 def onetoone(rxnid, gr, Nsource, flux, pro):
     zid = 'nan'
     fid = 'nan'
+    genename = 'nan'
     try:
         genename = SGD.loc[gr, 'Standard_name']
         fluxdiff = flux.loc[rxnid, Nsource] - flux.loc[rxnid, 'NH4']
@@ -39,24 +40,34 @@ def onetoone(rxnid, gr, Nsource, flux, pro):
     except KeyError:
         pro_Nsource = 'nan'
         pro_NH4 = 'nan'
-    return zid, fid, pro_Nsource, pro_NH4
+    return zid, fid, pro_Nsource, pro_NH4, genename
 
 # sum
 def isoenzyme(o_s, rxnid, Nsource, flux, pro, SGD):
     zid = 'nan'
     fid = 'nan'
+    genename = []
     fluxdiff = flux.loc[rxnid, Nsource] - flux.loc[rxnid, 'NH4']
     try:
-        pro_Nsource = np.sum([pro.loc[SGD.loc[sn, 'Standard_name'], Nsource] for sn in o_s])
-        pro_NH4 = np.sum([pro.loc[SGD.loc[sn, 'Standard_name'], 'NH4'] for sn in o_s])
+        # compare flux and proteomic data
+        pro_N_l = [pro.loc[SGD.loc[sn, 'Standard_name'], Nsource] for sn in o_s]
+        pro_NH4_l = [pro.loc[SGD.loc[sn, 'Standard_name'], 'NH4'] for sn in o_s]
+        pro_Nsource = np.sum(pro_N_l)
+        pro_NH4 = np.sum(pro_NH4_l)
         prodiff = pro_Nsource - pro_NH4
         if fluxdiff > 0 and prodiff > 0:
+            # get rxn id
             zid = rxnid
+            # get gene id
+            for v1, v2 in zip(pro_N_l, pro_NH4_l):
+                if v1 > v2:
+                    genename.append(o_s[pro_N_l.index(v1)])
         if fluxdiff < 0 and prodiff < 0:
             fid = rxnid
+
     except KeyError:
         pass
-    return zid, fid
+    return zid, fid, genename
 
 # min
 def complex(gr, rxnid, Nsource, flux, pro, SGD):
@@ -64,23 +75,30 @@ def complex(gr, rxnid, Nsource, flux, pro, SGD):
     zid = 'nan'
     fid = 'nan'
     fluxdiff = flux.loc[rxnid, Nsource] - flux.loc[rxnid, 'NH4']
+    genename = []
     try:
-        pro_Nsource = np.min([pro.loc[SGD.loc[sn, 'Standard_name'], Nsource] for sn in gr_s])
-        pro_NH4 = np.min([pro.loc[SGD.loc[sn, 'Standard_name'], 'NH4'] for sn in gr_s])
+        pro_N_l = [pro.loc[SGD.loc[sn, 'Standard_name'], Nsource] for sn in gr_s]
+        pro_NH4_l = [pro.loc[SGD.loc[sn, 'Standard_name'], 'NH4'] for sn in gr_s]
+        pro_Nsource = np.min(pro_N_l)
+        pro_NH4 = np.min(pro_NH4_l)
         prodiff = pro_Nsource - pro_NH4
         if fluxdiff > 0 and prodiff > 0:
             zid = rxnid
+            for v1, v2 in zip(pro_N_l, pro_NH4_l):
+                if v1 > v2:
+                    genename.append(gr_s[pro_N_l.index(v1)])
         if fluxdiff < 0 and prodiff < 0:
             fid = rxnid
     except KeyError:
         pro_Nsource = 'nan'
         pro_NH4 = 'nan'
-    return zid, fid, pro_Nsource, pro_NH4
+    return zid, fid, pro_Nsource, pro_NH4, genename
 
 
 def comiso(o_s, rxnid, Nsource, flux, pro, SGD):
     zid = 'nan'
     fid = 'nan'
+    genename = []
     tempcom = []
     tempiso = []
     fluxdiff = flux.loc[rxnid, Nsource] - flux.loc[rxnid, 'NH4']
@@ -95,12 +113,15 @@ def comiso(o_s, rxnid, Nsource, flux, pro, SGD):
     xiaoNsource = []
     xiaoNH4 = []
     for co in tempcom:
-        zid, fid, pro_Nsource, pro_NH4 = complex(co, rxnid, Nsource, flux, pro, SGD)
+        zid, fid, pro_Nsource, pro_NH4, genenamecom = complex(co, rxnid, Nsource, flux, pro, SGD)
+        for gi in genenamecom:
+            genename.append(gi)
         if pro_Nsource != 'nan' and pro_NH4 != 'nan':
             xiaoNsource.append(pro_Nsource)
             xiaoNH4.append(pro_NH4)
     for iso in tempiso:
-        zid, fid, pro_Nsource, pro_NH4 = onetoone(rxnid, iso, Nsource, flux, pro)
+        zid, fid, pro_Nsource, pro_NH4, genenameone = onetoone(rxnid, iso, Nsource, flux, pro)
+        genename.append(genenameone)
         if pro_Nsource != 'nan' and pro_NH4 != 'nan':
             xiaoNsource.append(pro_Nsource)
             xiaoNH4.append(pro_NH4)
@@ -109,12 +130,13 @@ def comiso(o_s, rxnid, Nsource, flux, pro, SGD):
         zid = rxnid
     if fluxdiff < 0 and prodiff < 0:
         fid = rxnid
-    return zid, fid
+    return zid, fid, genename
 
 
 def pro_flux(model, Nsource, flux, pro, SGD):
     zid_l = []
     fid_l = []
+    zgene_l = []
     for r in model.reactions:
         gr = r.gene_reaction_rule
         a_s = gr.split(' and ')
@@ -122,39 +144,64 @@ def pro_flux(model, Nsource, flux, pro, SGD):
         rxnid = r.id
         if len(a_s) == 1 and len(o_s) == 1:
             # one to one
-            zid, fid, pro_Nsource, pro_NH4 = onetoone(rxnid, gr, Nsource, flux, pro)
+            zid, fid, pro_Nsource, pro_NH4, genename = onetoone(rxnid, gr, Nsource, flux, pro)
             if zid != 'nan':
                 zid_l.append(zid)
+                zgene_l.append(genename)
             if fid != 'nan':
                 fid_l.append(fid)
         elif len(a_s) == 1 and len(o_s) != 1:
             # isoenzyme, or
-            zid, fid = isoenzyme(o_s, rxnid, Nsource, flux, pro, SGD)
+            zid, fid, genename = isoenzyme(o_s, rxnid, Nsource, flux, pro, SGD)
             if zid != 'nan':
                 zid_l.append(zid)
+                for gii in genename:
+                    zgene_l.append(gii)
             if fid != 'nan':
                 fid_l.append(fid)
         elif len(a_s) != 1 and len(o_s) == 1:
-            # complex, and
-            zid, fid, pro_Nsource, pro_NH4 = complex(gr, rxnid, Nsource, flux, pro, SGD)
+            # complex
+            zid, fid, pro_Nsource, pro_NH4, genename = complex(gr, rxnid, Nsource, flux, pro, SGD)
             if zid != 'nan':
                 zid_l.append(zid)
+                for gii in genename:
+                    zgene_l.append(gii)
             if fid != 'nan':
                 fid_l.append(fid)
         elif len(a_s) != 1 and len(o_s) != 1:
             # isoenzyme and complex
-            zid, fid = comiso(o_s, rxnid, Nsource, flux, pro, SGD)
+            zid, fid, genename = comiso(o_s, rxnid, Nsource, flux, pro, SGD)
             if zid != 'nan':
                 zid_l.append(zid)
+                for gii in genename:
+                    zgene_l.append(gii)
             if fid != 'nan':
                 fid_l.append(fid)
 
-    return zid_l, fid_l
+    return zid_l, fid_l, zgene_l
 
 
-glu_zid_l, glu_fid_l = pro_flux(model, 'Glu', flux, pro, SGD)
-phe_zid_l, phe_fid_l = pro_flux(model, 'Phe', flux, pro, SGD)
-ile_zid_l, ile_fid_l = pro_flux(model, 'Ile', flux, pro, SGD)
+# glu_zid_l, glu_fid_l, glu_zgene_l = pro_flux(model, 'Glu', flux, pro, SGD)
+phe_zid_l, phe_fid_l, phe_zgene_l = pro_flux(model, 'Phe', flux, pro, SGD)
+ile_zid_l, ile_fid_l, ile_zgene_l = pro_flux(model, 'Ile', flux, pro, SGD)
+phe_zgene_l = list(set(phe_zgene_l))
+ile_zgene_l = list(set(ile_zgene_l))
+phe_zgene_s = pd.Series(index=phe_zgene_l)
+for p in phe_zgene_l:
+    try:
+        phe_zgene_s.loc[p] = SGD.loc[p, 'Standard_name']
+    except:
+        phe_zgene_s.loc[p] = p
+ile_zgene_s = pd.Series(index=ile_zgene_l)
+for il in ile_zgene_l:
+    try:
+        ile_zgene_s.loc[il] = SGD.loc[il, 'Standard_name']
+    except:
+        ile_zgene_s.loc[il] = il
+phe_zgene_s.to_excel('../N_lim/output/phe_zgene.xlsx', index=False)
+ile_zgene_s.to_excel('../N_lim/output/ile_zgene.xlsx', index=False)
+
+
 
 sub = pd.read_table('../N_lim/data/uniqueSubsystems.tsv')
 sub.index = sub.loc[:, 'ID']
@@ -165,7 +212,7 @@ phecount = phe.value_counts('subsystem')
 phefigure = pd.DataFrame(index=range(len(phecount.index)), columns=['subsystem', 'number'])
 phefigure.loc[:, 'subsystem'] = phecount.index
 phefigure.loc[:, 'number'] = phecount.loc[:].values.tolist()
-
+phe.to_excel('../N_lim/output/phe_sub.xlsx')
 
 ile = pd.DataFrame(index=ile_zid_l, columns=['subsystem'])
 for i in ile.index.values.tolist():
@@ -174,6 +221,7 @@ ilecount = ile.value_counts('subsystem')
 ilefigure = pd.DataFrame(index=range(len(ilecount.index)), columns=['subsystem', 'number'])
 ilefigure.loc[:, 'subsystem'] = ilecount.index
 ilefigure.loc[:, 'number'] = ilecount.loc[:].values.tolist()
+ile.to_excel('../N_lim/output/ile_sub.xlsx')
 #############################################
 # figure
 font3 = {'family': 'Arial',
