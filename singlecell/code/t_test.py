@@ -84,7 +84,7 @@ plt.pie(values,
         wedgeprops={'linewidth': 3, 'edgecolor': 'white'},
         colors=['#64F0E1', '#F09165'],
         textprops=font2)
-plt.title('t-test of nonezero flux', fontdict=font1)
+plt.title('t-test of nonzero flux', fontdict=font1)
 plt.legend(name_l,
            bbox_to_anchor=(0.9, 0.9),
            prop=font3)

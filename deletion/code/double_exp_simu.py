@@ -33,7 +33,7 @@ font1 = {'family': 'Arial',
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 16,
+         'size': 18,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
@@ -47,9 +47,9 @@ plt.ylabel('log2 of doubling time fold change',
 plt.xlabel('Growth rate(h-1)',
            fontdict=font2)
 plt.xticks(fontproperties='Arial',
-           size=12)
+           size=16)
 plt.yticks(fontproperties='Arial',
-           size=12)
+           size=16)
 plt.tight_layout()
 plt.savefig('../deletion/output/Double_growth_exp_simu.jpg')
 plt.show()

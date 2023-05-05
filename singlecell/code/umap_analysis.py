@@ -33,11 +33,11 @@ font2 = {'family': 'Arial',
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 16,
+         'size': 20,
          }
 
 figure = plt.subplots(figsize=(8, 6))
-plt.scatter(embedding[80:163, 1],
+plt.scatter(embedding[80:163, 0],
             embedding[80:163, 2],
             s=20,
             color='navy',
@@ -45,14 +45,14 @@ plt.scatter(embedding[80:163, 1],
             label='unstress',
             )
 
-plt.scatter(embedding[0:80, 1],
+plt.scatter(embedding[0:80, 0],
             embedding[0:80, 2],
             s=20,
             color='red',
             alpha=0.5,
-            label='salt stress',
+            label='high osmotic pressure',
             )
-plt.xlabel('Dimension 2', fontdict=font3)
+plt.xlabel('Dimension 1', fontdict=font3)
 plt.ylabel('Dimension 3', fontdict=font3)
 plt.legend(loc="best",
            shadow=False,
@@ -60,9 +60,9 @@ plt.legend(loc="best",
            prop=font3)
 plt.title("Condition clustering", fontdict=font1)
 plt.xticks(fontproperties='Arial',
-           size=16)
+           size=20)
 plt.yticks(fontproperties='Arial',
-           size=16)
-plt.savefig('../singlecell/output/umap23.jpg',
+           size=20)
+plt.savefig('../singlecell/output/umap13.jpg',
             dpi=600)
 plt.show()

@@ -1,7 +1,7 @@
 % get N lim condition-specific model based on rosemarys' dataset
 function [cs_model] = load_model
 cd ..
-model = readCbModel('data/yeast-GEM209.xml');
+model = importModel('data/yeast-GEM.xml');
 exp1e = readmatrix('data/1e mean.xlsx');
 si4 = readmatrix('data/Supplementary Data 4.xlsx');
 modelNH4_Nlim_01 = model; modelgln_Nlim_01 = model; modelphe_Nlim_01 = model; modelile_Nlim_01 = model;
@@ -80,8 +80,10 @@ modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1992',	-exp1e(13,12),'b'
 modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1761',	exp1e(13,13),'b');%ethanol
 modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1634',	exp1e(13,14),'b');%acetate 
 modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_2033',	exp1e(13,15),'b');%pyruvate 
-modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_2056',	exp1e(13,16),'b');%succinate 
-modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1808',	exp1e(13,17),'b');%glycerol 
+modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_2056',	exp1e(13,16),'b');%succinate
+% the tempYeast9 is infeasible when constrain the following exchange
+% reaction
+% modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1808',	exp1e(13,17),'b');%glycerol 
 modelile_Nlim_01 = changeObjective(modelile_Nlim_01,	'r_1897');
 solutionile_Nlim_01 = optimizeCbModel(modelile_Nlim_01,'max');
 modelile_Nlim_01 = changeRxnBounds(modelile_Nlim_01,	'r_1897',	solutionile_Nlim_01.f, 'b');%-2.89

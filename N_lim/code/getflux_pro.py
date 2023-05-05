@@ -17,7 +17,7 @@ import pandas as pd
 from N_lim.code.load_csmodel import load_csmodel
 
 
-def getflux(model, analysis):
+def getflux(model, analysis, m):
     # model   :   metabolic model
     # analysis:   pFBA or sample
     # set ATPM as object
@@ -30,7 +30,7 @@ def getflux(model, analysis):
         csflux = sam_solution.mean(axis=0).to_dict()
         gene_pro = []
         for r in csflux.keys():
-            gene_pro.append(model.reactions.get_by_id(r).gene_name_reaction_rule)
+            gene_pro.append(model.reactions.get_by_id(r).gene_reaction_rule)
         flux_gene_value = pd.DataFrame({
             'reactionID': csflux.keys(),
             'flux': csflux.values(),
@@ -41,13 +41,16 @@ def getflux(model, analysis):
         csflux = pfba_solution.fluxes.to_dict()
         gene_pro = []
         for r in csflux.keys():
-            gene_pro.append(model.reactions.get_by_id(r).gene_name_reaction_rule)
+            # gene_pro.append(model.reactions.get_by_id(r).gene_name_reaction_rule)
+            gene_pro.append(model.reactions.get_by_id(r).gene_reaction_rule)
+
         flux_gene_value = pd.DataFrame({
             'reactionID':csflux.keys(),
             'flux': csflux.values(),
             'gene': gene_pro},
             )
     flux_gene_value.index = flux_gene_value.loc[:, 'reactionID']
+    flux_gene_value.to_excel('./output/sampling_flux_{}.xlsx'.format(m))
     return flux_gene_value
 
 ###########################################################################

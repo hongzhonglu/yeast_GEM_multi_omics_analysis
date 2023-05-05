@@ -7,7 +7,7 @@ model = readCbModel('../data/yeast-GEM.xml');
 name = txt(1, (2:end));
 changeCobraSolver ('glpk', 'all');
 exp.gene = txt((2:end), 1);
-for i = 161 : length(name)
+for i = 1 : length(name)
     exp.rawValue = num(:,i);
     exp.value = num(:,i);
     [expressionRxns, parsedGPR] = mapExpressionToReactions(model, exp);
@@ -17,5 +17,6 @@ for i = 161 : length(name)
     cs_model = createTissueSpecificModel(model, options);
     modelFileName = convertStringsToChars(strcat('../output/scmodel/', name{i}, '.xml'));
     writeCbModel(cs_model, 'sbml', modelFileName);
+    disp(i);
 end
  

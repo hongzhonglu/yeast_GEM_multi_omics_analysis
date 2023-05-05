@@ -55,22 +55,42 @@ font1 = {'family': 'Arial',
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 16,
+         'size': 14,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 12,
          }
 
-plt.subplots(figsize=(8, 6))
+plt.figure(figsize=(4, 6))
+# plt.barh(y=['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
+#          width=abssl,
+#          height=0.6,
+#          facecolor='#C69C6D',
+#          edgecolor='#000000')
 plt.bar(['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
-        abssl)
-plt.xlabel('Nitrogen Source', fontdict=font2)
+        abssl,
+        facecolor='#C69C6D',
+        edgecolor='#000000')
+# plt.xlabel('Nitrogen Source', fontdict=font2)
 plt.ylabel('Preference Score', fontdict=font2)
-plt.xticks(fontproperties='Arial',
-           size=12)
 plt.yticks(fontproperties='Arial',
            size=12)
+plt.xticks(fontproperties='Arial',
+           size=12,
+           rotation=30)
+plt.tight_layout()
+
+# plt.bar(['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
+#         abssl,
+#         width=0.35)
+# plt.xlabel('Nitrogen Source', fontdict=font2)
+# plt.ylabel('Preference Score', fontdict=font2)
+# plt.xticks(fontproperties='Arial',
+#            size=18)
+# plt.yticks(fontproperties='Arial',
+#            size=18)
+# plt.tight_layout()
 plt.savefig('../N_lim/output/Preference Score.jpg',
             dpi=600)
 plt.show()

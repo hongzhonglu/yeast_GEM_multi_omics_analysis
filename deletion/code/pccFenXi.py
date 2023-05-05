@@ -53,6 +53,7 @@ for g in gene_l:
             temppcc.append(pcc[0, 1])
         except TypeError:
             temppcc.append(pcc)
+    # for genes related to more than one reations, get the PCC mean
     PCC[g.id] = np.mean(temppcc)
     pdata[g.id] = r.pvalue
 PCC = pd.Series(PCC)
@@ -60,6 +61,7 @@ PCC_abs = abs(PCC)
 PCC = PCC.sort_values()
 PCC_abs = PCC_abs.sort_values(ascending=False)
 PCC_clear = PCC.drop(PCC[(PCC[:] < 0.00001) & (PCC[:] > -0.00001)].index)
+PCC.to_excel('../deletion/output/PCC_gene.xlsx')
 
 # draw
 font1 = {'family': 'Arial',
@@ -132,19 +134,21 @@ print("high:" + str(len(high)) +
 # draw
 names = ['|PCC| ≥ 0.4', '0.2 ≤ |PCC| < 0.4', '|PCC| < 0.2']
 size = [len(high), len(medium), len(low)]
-
+plt.subplots(figsize=(8, 6))
 my_circle = plt.Circle((0, 0), 0.7, color='white')
 
 plt.pie(size,
-        labels=names,
+        #labels=names,
         colors=['#3491F7', '#3A51E0', '#5E34F7'],
-        wedgeprops={'linewidth': 3, 'edgecolor': 'white'})
+        wedgeprops={'linewidth': 3, 'edgecolor': 'white'},
+        textprops={'fontsize': 16})
 p = plt.gcf()
 p.gca().add_artist(my_circle)
-plt.yticks(fontproperties='Arial',
-           size=16)
-plt.savefig('../deletion/output/highmediumlow.jpg',
-            dpi=600)
+plt.yticks(fontproperties='Arial')
+plt.tight_layout()
+plt.savefig('../deletion/output/highmediumlow.png',
+            dpi=600,
+            transparent=True)
 plt.show()
 
 # get SubsystemAnalysis.xlsx

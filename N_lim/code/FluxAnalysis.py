@@ -13,9 +13,9 @@ os.chdir('..')
 
 path = [
     '../N_lim/output/Nlim_model/modelgln_Nlim_01.xml',
-    '../N_lim/output/Nlim_model/output/modelNH4_Nlim_01.xml',
-    '../N_lim/output/Nlim_model/output/modelile_Nlim_01.xml',
-    '../N_lim/output/Nlim_model/output/modelphe_Nlim_01.xml',
+    '../N_lim/output/Nlim_model/modelNH4_Nlim_01.xml',
+    '../N_lim/output/Nlim_model/modelile_Nlim_01.xml',
+    '../N_lim/output/Nlim_model/modelphe_Nlim_01.xml',
 ]
 rx = [
     'r_1891',
@@ -38,7 +38,8 @@ for m, r in zip(path, rx):
 
 flux2 = flux
 flux2.columns = ['Glu', 'NH4', 'Ile', 'Phe']
-flux2.to_excel('../N_lim/output/Nlim_model/output/Nsourceflux.xlsx')
+flux2.to_excel('../N_lim/output/Nlim_model/Nsourceflux.xlsx')
+''''''''' 
 def tonglu(flux, metabolism):
     subfile = pd.read_table(
         '../N_lim/data/uniqueSubsystems.tsv')
@@ -127,5 +128,4 @@ plt.tight_layout()
 plt.savefig('../N_lim/output/pathAna.jpg',
             dpi=600)
 plt.show()
-
-###################################
+'''''''''

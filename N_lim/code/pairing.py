@@ -20,20 +20,56 @@
 ###########################################################################
 import pandas as pd
 import re
+import numpy as np
+
+def get_prot_conc(tempgene, sgd, protdict, condition):
+    gene1 = re.compile(r'Y.{6}').findall(tempgene)
+    gene2 = re.compile(r'Y.{6}-\w').findall(tempgene)
+    gene3 = re.compile(r'Q.{4}').findall(tempgene)
+    gene = gene1 + gene2 + gene3
+    templist = []
+    for t in gene:
+        try:
+            t = sgd.loc[t, 'Standard_name']
+            templist.append(protdict[condition].loc[t, 'prot'])
+        except KeyError or ValueError:
+            pass
+    return templist
+
+
+def oneone(templist, flux_prot, condition):
+    if len(templist) != 0:
+        flux_prot.loc[condition, 'prot'] = templist[0]
+    else:
+        flux_prot.loc[condition, 'prot'] = 0
+    return flux_prot
+
+
+def complex(templist, flux_prot, condition):
+    if len(templist) != 0:
+        conc = np.min(templist)
+        flux_prot.loc[condition, 'prot'] = np.min(templist)
+    else:
+        conc = [0]
+        flux_prot.loc[condition, 'prot'] = 0
+    return flux_prot, conc
+
+
+def isoenzyme(templist, flux_prot, condition):
+    flux_prot.loc[condition, 'prot'] = np.sum(templist)
+    return flux_prot, np.sum(templist)
+
 
 def paring(fluxdict, protdict, reactionID):
+    sgd = pd.read_table(r'D:\model_research\yeast_GEM_multi_omics_analysis\N_lim\data\SGDgeneNames.tsv')
+    sgd.index = sgd.loc[:, 'Systematic_name']
     conditionname = ['CN115', 'CN50', 'CN30', 'Phe', 'Ile',
                      'N035', 'N030', 'N018', 'N013',
                      'N010', 'N005', 'Gln']
     flux_prot = pd.DataFrame(index=conditionname,
-                             columns=['flux', 'prot']
-                            )
-    N_protgene_list = protdict['Phe'].index.values.tolist()
-    CN_protgene_list = protdict['CN30'].index.values.tolist()
-    commongene = [val for val in N_protgene_list if val in CN_protgene_list]
-    num = -1
+                             columns=['flux', 'prot'])
+    print(reactionID)
     for rr, cc in zip(fluxdict.keys(), conditionname):
-        num += 1
         tempgene = fluxdict[rr].loc[reactionID, 'gene']
         re_and = re.compile('and')
         re_or = re.compile('or')
@@ -42,135 +78,23 @@ def paring(fluxdict, protdict, reactionID):
         flux_prot.loc[cc, 'flux'] = fluxdict[rr].loc[reactionID, 'flux']
         # one enzyme catalyse one reaction
         if len(com_or) == 0 and len(com_and) == 0:
-            if num < 3:
-                try:
-                    tempindex = commongene.index(tempgene)
-                    flux_prot.loc[cc, 'prot'] = protdict[cc].loc[tempgene, 'prot']
-                except ValueError or KeyError:
-                    flux_prot.loc[cc, 'prot'] = 0
-            else:
-                try:
-                    tempindex = commongene.index(tempgene)
-                    flux_prot.loc[cc, 'prot'] = protdict[cc].loc[tempgene, 'prot']
-                except ValueError or KeyError:
-                    flux_prot.loc[cc, 'prot'] = 0
+            templist = get_prot_conc(tempgene, sgd, protdict, cc)
+            flux_prot = oneone(templist, flux_prot, cc)
         # complex
-        elif len(com_or) == 0 and len(com_and) != 0:
-            if num < 3:
-                tempgene = tempgene.split(' and ')
-                templist = []
-                for t in tempgene:
-                    try:
-                        tempindex = commongene.index(t)
-                        templist.append(protdict[cc].loc[t, 'prot'])
-                    except ValueError or KeyError:
-                        templist.append(0)
-                flux_prot.loc[cc, 'prot'] = min(templist)
-            else:
-                tempgene = tempgene.split(' and ')
-                templist = []
-                for t in tempgene:
-                    try:
-                        tempindex = commongene.index(t)
-                        templist.append(protdict[cc].loc[t, 'prot'])
-                    except ValueError or KeyError:
-                        templist.append(0)
-                flux_prot.loc[cc, 'prot'] = min(templist)
+        if len(com_or) == 0 and len(com_and) != 0:
+            templist = get_prot_conc(tempgene, sgd, protdict, cc)
+            flux_prot, __ = complex(templist, flux_prot, cc)
         # isoenzymes
-        elif len(com_or) != 0 and len(com_and) == 0:
-            if num < 3:
-                tempgene = tempgene.split(' or ')
-                templist = []
-                for t in tempgene:
-                    try:
-                        tempindex = commongene.index(t)
-                        templist.append(str(protdict[cc].loc[t, 'prot']))
-                    except ValueError or KeyError:
-                        templist.append('0')
-                tempstr = ' or '.join(templist)
-                flux_prot.loc[cc, 'prot'] = tempstr
-            else:
-                tempgene = tempgene.split(' or ')
-                templist = []
-                for t in tempgene:
-                    try:
-                        tempindex = commongene.index(t)
-                        templist.append(str(protdict[cc].loc[t, 'prot']))
-                    except ValueError or KeyError:
-                        templist.append('0')
-                tempstr = ' or '.join(templist)
-                flux_prot.loc[cc, 'prot'] = tempstr
-
+        if len(com_or) != 0 and len(com_and) == 0:
+            templist = get_prot_conc(tempgene, sgd, protdict, cc)
+            flux_prot, __ = isoenzyme(templist, flux_prot, cc)
         # complex and isoenzyme
-        elif len(com_or) != 0 and len(com_and) != 0:
-            if num < 3:
-                tempcomplex = tempgene.split(' or ')
-                templist = []
-                tempcomplexgene = []
-
-                for t in tempcomplex:
-                    if len(t.split('(')) == 1:
-                        tempcomplexgene.append(t)
-                    else:
-                        t = t.split('(')[1].split(')')[0]
-                        tempcomplexgene.append(t)
-                if len(re_and.findall(tempcomplexgene[0])) == 0:
-                    tempcomplexgene = tempcomplexgene[::-1]
-                for tt in tempcomplexgene:
-                    co_and = re_and.findall(tt)
-                    if len(co_and) == 0:
-                        try:
-                            tempindex = commongene.index(tt)
-                            templist.append(protdict[cc].loc[tt, 'prot'])
-                        except ValueError or KeyError:
-                            templist.append(0)
-                    else:
-                        tempcomlist = []
-                        tt = tt.split(' and ')
-                        for omg in tt:
-                            try:
-                                tempindex = commongene.index(omg)
-                                tempcomlist.append(protdict[cc].loc[omg, 'prot'])
-                            except ValueError or KeyError:
-                                tempcomlist.append(0)
-                    templist.append(min(tempcomlist))
-                for te in range(len(templist)):
-                    templist[te] = str(templist[te])
-                tempstr = ' or '.join(templist)
-                flux_prot.loc[cc, 'prot'] = tempstr
-            else:
-                tempcomplex = tempgene.split(' or ')
-                templist = []
-                tempcomplexgene = []
-
-                for t in tempcomplex:
-                    if len(t.split('(')) == 1:
-                        tempcomplexgene.append(t)
-                    else:
-                        t = t.split('(')[1].split(')')[0]
-                        tempcomplexgene.append(t)
-                if len(re_and.findall(tempcomplexgene[0])) == 0:
-                    tempcomplexgene = tempcomplexgene[::-1]
-                for tt in tempcomplexgene:
-                    co_and = re_and.findall(tt)
-                    if len(co_and) == 0:
-                        try:
-                            tempindex = commongene.index(tt)
-                            templist.append(protdict[cc].loc[tt, 'prot'])
-                        except ValueError or KeyError:
-                            templist.append(0)
-                    else:
-                        tempcomlist = []
-                        tt = tt.split(' and ')
-                        for omg in tt:
-                            try:
-                                tempindex = commongene.index(omg)
-                                tempcomlist.append(protdict[cc].loc[omg, 'prot'])
-                            except ValueError or KeyError:
-                                tempcomlist.append(0)
-                    templist.append(min(tempcomlist))
-                for te in range(len(templist)):
-                    templist[te] = str(templist[te])
-                tempstr = ' or '.join(templist)
-                flux_prot.loc[cc, 'prot'] = tempstr
+        if len(com_or) != 0 and len(com_and) != 0:
+            tempcomplex = tempgene.split(' or ')
+            isocom = []
+            for tc in tempcomplex:
+                templist = get_prot_conc(tc, sgd, protdict, cc)
+                __, conc = complex(templist, flux_prot, cc)
+                isocom = isocom + conc
+            flux_prot.loc[cc, 'prot'] = np.sum(isocom)
     return flux_prot

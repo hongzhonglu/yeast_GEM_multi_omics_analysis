@@ -1,0 +1,22 @@
+function [tp, tn, fp, fn] = simu_exp(simu, exp, tp, tn, fp, fn)
+    if nargin(simu_exp) < 3
+        tp = 0; tn = 0; fp = 0; fn = 0;
+    end
+    % tp
+    if simu < 0.00001 && exp == 'SL'
+        tp = tp + 1;
+    end
+    % tn
+    if simu > 0.00001 && exp == 'SS'
+        tn = tn + 1;
+    end
+    % fp
+    if simu < 0.00001 && exp == 'SS'
+        fp = fp + 1;
+    end
+    % fn
+    if simu < 0.00001 && exp < -0.35
+        fn = fn + 1;
+    end
+    fprintf('tp=%u\ntn=%u\nfp=%u\nfn=%u\n', tp, tn, fp, fn)
+end

@@ -1,5 +1,5 @@
 ##########################################
-# get "ile.jpg" and "phe.jpg"
+# get "ile.jpg","phe.jpg","phe/ile_zgene.xlsx"
 # first run "FluxAnalysis.py" and get "Nsourceflux.xlsx"
 # Select the reaction whose flux and corresponding protein expression level of
 # Ile or Phe that are larger than their counterpart in NH4.
@@ -228,7 +228,7 @@ font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 15,
          }
-plt.figure(figsize=(20,10))
+plt.figure(figsize=(20, 10))
 ax = plt.subplot(111, polar=True)
 plt.axis('off')
 

@@ -36,22 +36,24 @@ font1 = {'family': 'Arial',
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 16,
+         'size': 18,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 12,
          }
-plt.subplots(figsize=(10, 8))
+plt.subplots(figsize=(8, 6))
 plt.barh(y=zheng5.Term,
          color=colors,
          width=zheng5.Count)
+plt.title('PCC > 0.2',
+          fontdict=font2)
 plt.xlabel('Gene number',
            fontdict=font2)
 plt.yticks(fontproperties='Arial',
-           size=12)
-plt.yticks(fontproperties='Arial',
-           size=12)
+           size=16)
+plt.xticks(fontproperties='Arial',
+           size=16)
 plt.tight_layout()
 plt.savefig(
     '../deletion/output/GO02bar.jpg',
@@ -64,16 +66,18 @@ plt.show()
 colors = num2color(fu5.loc[:, 'PValue'],
                    "RdBu")
 
-plt.subplots(figsize=(10, 8))
+plt.subplots(figsize=(8, 6))
 plt.barh(y=fu5.Term,
          color=colors,
          width=fu5.Count)
+plt.title('PCC < -0.2',
+          fontdict=font2)
 plt.xlabel('Gene number',
            fontdict=font2)
 plt.yticks(fontproperties='Arial',
-           size=12)
-plt.yticks(fontproperties='Arial',
-           size=12)
+           size=16)
+plt.xticks(fontproperties='Arial',
+           size=16)
 plt.tight_layout()
 plt.savefig(
     '../deletion/output/GO-02bar.jpg',

@@ -26,7 +26,7 @@ rxnnum = []
 metnum = []
 
 for s, en in zip(filepath, expid):
-    print('processing model Number' + c)
+    print('processing model Number' + str(c))
     tempflux = flux.copy()
     tempmodel = cobra.io.read_sbml_model(s)
     temp_pfba = cobra.flux_analysis.pfba(tempmodel)
@@ -36,6 +36,7 @@ for s, en in zip(filepath, expid):
     pca_data.loc[:, en] = tempflux.values()
     rxnnum.append(len(tempmodel.reactions))
     metnum.append(len(tempmodel.metabolites))
+    c += 1
 
 pca_data = pca_data.T
 rrr = [r/20 for r in rxnnum]

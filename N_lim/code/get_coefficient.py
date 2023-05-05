@@ -51,7 +51,7 @@ def linear_regression(fluxvalue, protvalue):
     nozerofluxindex = np.nonzero(fluxvalue)
     nozeroprotindex = np.nonzero(protvalue)
     commonnonzero = np.intersect1d(nozerofluxindex, nozeroprotindex)
-    if len(commonnonzero) > 4:
+    if len(commonnonzero) > 3:
         flux = [fluxvalue[flu] for flu in commonnonzero]
         protein = [protvalue[pro] for pro in commonnonzero]
         logflux = np.log10(flux)

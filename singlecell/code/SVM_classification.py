@@ -1,6 +1,6 @@
 ##################################################
 # apply SVM to classify two condition
-
+from sklearn.naive_bayes import GaussianNB
 import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import train_test_split
@@ -21,31 +21,45 @@ reducer = umap.UMAP(n_components=3)
 scaled_umap_data = StandardScaler().fit_transform(umap_data)
 embedding = reducer.fit_transform(scaled_umap_data)
 # train data size : test data size = 8:2
-train_data, test_data = train_test_split(
+# train_data, test_data = train_test_split(
+#     umap_data,
+#     random_state=1,
+#     train_size=0.8,
+#     test_size=0.2
+# )
+# train_lable, test_lable = train_test_split(
+#     lable,
+#     random_state=1,
+#     train_size=0.8,
+#     test_size=0.2
+# )
+#
+# clf = svm.SVC(
+#     C=2,
+#     kernel='rbf',
+#     gamma=10,
+#     decision_function_shape='ovr'
+# )
+# clf.fit(train_data, train_lable)
+# pre_train = clf.predict(train_data)
+# pre_test = clf.predict(test_data)
+# train_acc = accuracy_score(train_lable, pre_train)
+# test_acc = accuracy_score(test_lable, pre_test)
+train_data, test_data, train_lable, test_lable = train_test_split(
     umap_data,
-    random_state=1,
-    train_size=0.8,
-    test_size=0.2
-)
-train_lable, test_lable = train_test_split(
     lable,
     random_state=1,
     train_size=0.8,
-    test_size=0.2
+    test_size=0.2,
 )
+gnb = GaussianNB()
+gnb.fit(train_data, train_lable)
 
-clf = svm.SVC(
-    C=2,
-    kernel='rbf',
-    gamma=10,
-    decision_function_shape='ovr'
-)
-clf.fit(train_data, train_lable)
-pre_train = clf.predict(train_data)
-pre_test = clf.predict(test_data)
+pre_train = gnb.predict(train_data)
+pre_test = gnb.predict(test_data)
 train_acc = accuracy_score(train_lable, pre_train)
 test_acc = accuracy_score(test_lable, pre_test)
-all_acc = 0.8 * train_acc + 0.2 * test_acc
+
 
 ss = 0 #exp stress-simu stress
 s_ns = 0 #stress-unstress
@@ -73,9 +87,9 @@ for ff in range(len(pre_test)):
         ns_s += 1
 
 print(
-    'accuracy:' + str(all_acc) +
-    'ss:' + str(ss) +
-    's_ns:' + str(s_ns) +
-    'ns_ns:' + str(ns_ns) +
-    'ns_s:' + str(ns_s)
+    'accuracy:' + str(test_acc) + '\n' +
+    'ss:' + str(ss) + '\n' +
+    's_ns:' + str(s_ns) + '\n' +
+    'ns_ns:' + str(ns_ns) + '\n' +
+    'ns_s:' + str(ns_s) + '\n'
 )
