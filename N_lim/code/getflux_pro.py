@@ -26,7 +26,8 @@ def getflux(model, analysis, m):
     solution = model.optimize()
     model.reactions.get_by_id('r_4046').bounds = (solution.objective_value, 1000)
     if analysis == 'sample':
-        sam_solution = cobra.sampling.sample(model, 100)
+        sam_solution = cobra.sampling.sample(model, 1000)
+        sam_solution.to_csv('./output/sampling_{}.csv'.format(m))
         csflux = sam_solution.mean(axis=0).to_dict()
         gene_pro = []
         for r in csflux.keys():
@@ -38,6 +39,7 @@ def getflux(model, analysis, m):
         })
     if analysis == 'pFBA':
         pfba_solution = cobra.flux_analysis.pfba(model)
+        pfba_solution.fluxes.to_csv('./output/pfba_{}.csv'.format(m))
         csflux = pfba_solution.fluxes.to_dict()
         gene_pro = []
         for r in csflux.keys():
@@ -50,7 +52,7 @@ def getflux(model, analysis, m):
             'gene': gene_pro},
             )
     flux_gene_value.index = flux_gene_value.loc[:, 'reactionID']
-    flux_gene_value.to_excel('./output/sampling_flux_{}.xlsx'.format(m))
+    # flux_gene_value.to_excel('./output/sampling_flux_{}.xlsx'.format(m))
     return flux_gene_value
 
 ###########################################################################

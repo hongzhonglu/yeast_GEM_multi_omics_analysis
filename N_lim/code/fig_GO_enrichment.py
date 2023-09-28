@@ -55,10 +55,10 @@ plt.barh(y=ile4.Term,
 plt.xlabel('Gene number',
            fontdict=font2)
 plt.yticks(fontproperties='Arial',
-           size=14)
+           size=10)
 plt.xticks(fontproperties='Arial',
            size=16)
-# plt.tight_layout()
+plt.tight_layout()
 plt.savefig(
     '../N_lim/output/ile_GO_bar.jpg',
     dpi=800
@@ -80,10 +80,10 @@ plt.barh(y=phe4.Term,
 plt.xlabel('Gene number',
            fontdict=font2)
 plt.yticks(fontproperties='Arial',
-           size=14)
+           size=10)
 plt.xticks(fontproperties='Arial',
            size=16)
-# plt.tight_layout()
+plt.tight_layout()
 plt.savefig(
     '../N_lim/output/phe_GO_bar.jpg',
     dpi=600
@@ -101,7 +101,7 @@ plt.barh(y=same4.Term,
 plt.xlabel('Gene number',
            fontdict=font2)
 plt.yticks(fontproperties='Arial',
-           size=14)
+           size=8)
 plt.xticks(fontproperties='Arial',
            size=16)
 plt.tight_layout()

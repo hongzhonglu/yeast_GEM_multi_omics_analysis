@@ -12,15 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 
-os.chdir('..')
-# prepare figure data
-flux = pd.read_excel('../N_lim/output/Nsourceflux.xlsx')
-flux.index = flux.loc[:, 'id']
-pro = pd.read_csv('../N_lim/data/proteomic.csv')
-pro.index = pro.loc[:, 'Gene']
-SGD = pd.read_table('../N_lim/data/SGDgeneNames.tsv')
-model = cobra.io.read_sbml_model('../N_lim/data/yeast-GEM.xml')
-SGD.index = SGD.loc[:, 'Systematic_name']
+
 
 
 def onetoone(rxnid, gr, Nsource, flux, pro):
@@ -181,6 +173,25 @@ def pro_flux(model, Nsource, flux, pro, SGD):
     return zid_l, fid_l, zgene_l
 
 
+def get_flux():
+    phe = pd.read_csv('../output/pfba_2111_phe.csv')
+    ile = pd.read_csv('../output/pfba_2111_ile.csv')
+    gln = pd.read_csv('../output/pfba_2111_gln.csv')
+    nh4 = pd.read_csv('../output/pfba_2111_nh4.csv')
+    flux = pd.DataFrame(index=phe.iloc[:, 0], columns=['Glu', 'NH4', 'Ile', 'Phe'])
+    flux.loc[:, 'Glu'] = gln.iloc[:, 1].tolist()
+    flux.loc[:, 'NH4'] = nh4.iloc[:, 1].tolist()
+    flux.loc[:, 'Ile'] = ile.iloc[:, 1].tolist()
+    flux.loc[:, 'Phe'] = phe.iloc[:, 1].tolist()
+    return flux
+# prepare figure data
+flux = get_flux()
+#flux.index = flux.loc[:, 'id']
+pro = pd.read_csv('../data/proteomic.csv')
+pro.index = pro.loc[:, 'Gene']
+SGD = pd.read_table('../data/SGDgeneNames.tsv')
+model = cobra.io.read_sbml_model('../data/yeast-GEM.xml')
+SGD.index = SGD.loc[:, 'Systematic_name']
 # glu_zid_l, glu_fid_l, glu_zgene_l = pro_flux(model, 'Glu', flux, pro, SGD)
 phe_zid_l, phe_fid_l, phe_zgene_l = pro_flux(model, 'Phe', flux, pro, SGD)
 ile_zid_l, ile_fid_l, ile_zgene_l = pro_flux(model, 'Ile', flux, pro, SGD)
@@ -198,152 +209,153 @@ for il in ile_zgene_l:
         ile_zgene_s.loc[il] = SGD.loc[il, 'Standard_name']
     except:
         ile_zgene_s.loc[il] = il
-phe_zgene_s.to_excel('../N_lim/output/phe_zgene.xlsx', index=False)
-ile_zgene_s.to_excel('../N_lim/output/ile_zgene.xlsx', index=False)
+phe_zgene_s.to_excel('../output/phe_zgene.xlsx', index=False)
+ile_zgene_s.to_excel('../output/ile_zgene.xlsx', index=False)
 
+same = [i for i in phe_zgene_l if i in ile_zgene_l]
+pd.Series(same).to_excel('../output/Phe_Ile_same.xlsx', index=False)
 
-
-sub = pd.read_table('../N_lim/data/uniqueSubsystems.tsv')
-sub.index = sub.loc[:, 'ID']
-phe = pd.DataFrame(index=phe_zid_l, columns=['subsystem'])
-for i in phe.index.values.tolist():
-    phe.loc[i, 'subsystem'] = sub.loc[i, 'subsystem_unique_@2021_12']
-phecount = phe.value_counts('subsystem')
-phefigure = pd.DataFrame(index=range(len(phecount.index)), columns=['subsystem', 'number'])
-phefigure.loc[:, 'subsystem'] = phecount.index
-phefigure.loc[:, 'number'] = phecount.loc[:].values.tolist()
-phe.to_excel('../N_lim/output/phe_sub.xlsx')
-
-ile = pd.DataFrame(index=ile_zid_l, columns=['subsystem'])
-for i in ile.index.values.tolist():
-    ile.loc[i, 'subsystem'] = sub.loc[i, 'subsystem_unique_@2021_12']
-ilecount = ile.value_counts('subsystem')
-ilefigure = pd.DataFrame(index=range(len(ilecount.index)), columns=['subsystem', 'number'])
-ilefigure.loc[:, 'subsystem'] = ilecount.index
-ilefigure.loc[:, 'number'] = ilecount.loc[:].values.tolist()
-ile.to_excel('../N_lim/output/ile_sub.xlsx')
+# sub = pd.read_table('../data/uniqueSubsystems.tsv')
+# sub.index = sub.loc[:, 'ID']
+# phe = pd.DataFrame(index=phe_zid_l, columns=['subsystem'])
+# for i in phe.index.values.tolist():
+#     phe.loc[i, 'subsystem'] = sub.loc[i, 'subsystem_unique_@2021_12']
+# phecount = phe.value_counts('subsystem')
+# phefigure = pd.DataFrame(index=range(len(phecount.index)), columns=['subsystem', 'number'])
+# phefigure.loc[:, 'subsystem'] = phecount.index
+# phefigure.loc[:, 'number'] = phecount.loc[:].values.tolist()
+# phe.to_excel('../output/phe_sub.xlsx')
+#
+# ile = pd.DataFrame(index=ile_zid_l, columns=['subsystem'])
+# for i in ile.index.values.tolist():
+#     ile.loc[i, 'subsystem'] = sub.loc[i, 'subsystem_unique_@2021_12']
+# ilecount = ile.value_counts('subsystem')
+# ilefigure = pd.DataFrame(index=range(len(ilecount.index)), columns=['subsystem', 'number'])
+# ilefigure.loc[:, 'subsystem'] = ilecount.index
+# ilefigure.loc[:, 'number'] = ilecount.loc[:].values.tolist()
+# ile.to_excel('../output/ile_sub.xlsx')
 #############################################
 # figure
-font3 = {'family': 'Arial',
-         'weight': 'normal',
-         'size': 15,
-         }
-plt.figure(figsize=(20, 10))
-ax = plt.subplot(111, polar=True)
-plt.axis('off')
-
-upperLimit = 150
-lowerLimit = 5
-labelPadding = 4
-
-max = phefigure['number'].max()
-
-slope = (max - lowerLimit) / max
-heights = slope * phefigure.number + lowerLimit
-
-width = 2*np.pi / len(phefigure.index)
-
-indexes = list(range(1, len(phefigure.index)+1))
-angles = [element * width for element in indexes]
-angles
-
-# Draw bars
-bars = ax.bar(
-    x=angles,
-    height=heights,
-    width=width,
-    bottom=lowerLimit,
-    linewidth=2,
-    edgecolor="white",
-    color="#61a4b2",
-)
-
-# Add labels
-for bar, angle, height, label in zip(bars,angles, heights, phefigure["subsystem"]):
-
-    rotation = np.rad2deg(angle)
-
-    alignment = ""
-    if angle >= np.pi/2 and angle < 3*np.pi/2:
-        alignment = "right"
-        rotation = rotation + 180
-    else:
-        alignment = "left"
-
-    ax.text(
-        x=angle,
-        y=lowerLimit + bar.get_height() + labelPadding,
-        s=label,
-        ha=alignment,
-        va='center',
-        rotation=rotation,
-        rotation_mode="anchor",
-        fontdict=font3)
-
-plt.tight_layout()
-plt.savefig('../N_lim/output/phe.jpg',
-            dpi=600)
-plt.show()
-
-###################################
-# ile
-font3 = {'family': 'Arial',
-         'weight': 'normal',
-         'size': 15,
-         }
-plt.figure(figsize=(20,10))
-ax = plt.subplot(111, polar=True)
-plt.axis('off')
-
-upperLimit = 150
-lowerLimit = 5
-labelPadding = 4
-
-max = ilefigure['number'].max()
-
-slope = (max - lowerLimit) / max
-heights = slope * ilefigure.number + lowerLimit
-
-width = 2*np.pi / len(ilefigure.index)
-
-indexes = list(range(1, len(ilefigure.index)+1))
-angles = [element * width for element in indexes]
-angles
-
-# Draw bars
-bars = ax.bar(
-    x=angles,
-    height=heights,
-    width=width,
-    bottom=lowerLimit,
-    linewidth=2,
-    edgecolor="white",
-    color="#61a4b2",
-)
-
-# Add labels
-for bar, angle, height, label in zip(bars,angles, heights, ilefigure["subsystem"]):
-
-    rotation = np.rad2deg(angle)
-
-    alignment = ""
-    if angle >= np.pi/2 and angle < 3*np.pi/2:
-        alignment = "right"
-        rotation = rotation + 180
-    else:
-        alignment = "left"
-
-    ax.text(
-        x=angle,
-        y=lowerLimit + bar.get_height() + labelPadding,
-        s=label,
-        ha=alignment,
-        va='center',
-        rotation=rotation,
-        rotation_mode="anchor",
-        fontdict=font3)
-
-plt.tight_layout()
-plt.savefig('../N_lim/output/ile.jpg',
-            dpi=600)
-plt.show()
+# font3 = {'family': 'Arial',
+#          'weight': 'normal',
+#          'size': 15,
+#          }
+# plt.figure(figsize=(20, 10))
+# ax = plt.subplot(111, polar=True)
+# plt.axis('off')
+#
+# upperLimit = 150
+# lowerLimit = 5
+# labelPadding = 4
+#
+# max = phefigure['number'].max()
+#
+# slope = (max - lowerLimit) / max
+# heights = slope * phefigure.number + lowerLimit
+#
+# width = 2*np.pi / len(phefigure.index)
+#
+# indexes = list(range(1, len(phefigure.index)+1))
+# angles = [element * width for element in indexes]
+# angles
+#
+# # Draw bars
+# bars = ax.bar(
+#     x=angles,
+#     height=heights,
+#     width=width,
+#     bottom=lowerLimit,
+#     linewidth=2,
+#     edgecolor="white",
+#     color="#61a4b2",
+# )
+#
+# # Add labels
+# for bar, angle, height, label in zip(bars,angles, heights, phefigure["subsystem"]):
+#
+#     rotation = np.rad2deg(angle)
+#
+#     alignment = ""
+#     if angle >= np.pi/2 and angle < 3*np.pi/2:
+#         alignment = "right"
+#         rotation = rotation + 180
+#     else:
+#         alignment = "left"
+#
+#     ax.text(
+#         x=angle,
+#         y=lowerLimit + bar.get_height() + labelPadding,
+#         s=label,
+#         ha=alignment,
+#         va='center',
+#         rotation=rotation,
+#         rotation_mode="anchor",
+#         fontdict=font3)
+#
+# plt.tight_layout()
+# plt.savefig('../N_lim/output/phe.jpg',
+#             dpi=600)
+# plt.show()
+#
+# ###################################
+# # ile
+# font3 = {'family': 'Arial',
+#          'weight': 'normal',
+#          'size': 15,
+#          }
+# plt.figure(figsize=(20,10))
+# ax = plt.subplot(111, polar=True)
+# plt.axis('off')
+#
+# upperLimit = 150
+# lowerLimit = 5
+# labelPadding = 4
+#
+# max = ilefigure['number'].max()
+#
+# slope = (max - lowerLimit) / max
+# heights = slope * ilefigure.number + lowerLimit
+#
+# width = 2*np.pi / len(ilefigure.index)
+#
+# indexes = list(range(1, len(ilefigure.index)+1))
+# angles = [element * width for element in indexes]
+# angles
+#
+# # Draw bars
+# bars = ax.bar(
+#     x=angles,
+#     height=heights,
+#     width=width,
+#     bottom=lowerLimit,
+#     linewidth=2,
+#     edgecolor="white",
+#     color="#61a4b2",
+# )
+#
+# # Add labels
+# for bar, angle, height, label in zip(bars,angles, heights, ilefigure["subsystem"]):
+#
+#     rotation = np.rad2deg(angle)
+#
+#     alignment = ""
+#     if angle >= np.pi/2 and angle < 3*np.pi/2:
+#         alignment = "right"
+#         rotation = rotation + 180
+#     else:
+#         alignment = "left"
+#
+#     ax.text(
+#         x=angle,
+#         y=lowerLimit + bar.get_height() + labelPadding,
+#         s=label,
+#         ha=alignment,
+#         va='center',
+#         rotation=rotation,
+#         rotation_mode="anchor",
+#         fontdict=font3)
+#
+# plt.tight_layout()
+# plt.savefig('../N_lim/output/ile.jpg',
+#             dpi=600)
+# plt.show()

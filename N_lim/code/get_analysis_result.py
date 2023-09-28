@@ -35,6 +35,25 @@ def get_flux_prot(ID, model_fluxdict, protdict):
     return reaction_slope, cc, c
 
 
+def get_flux_prot_z(ID, model_fluxdict, protdict):
+    cc = 0
+    reaction_slope = pd.DataFrame()
+    for rea in ID:
+        flux_prot = paring(model_fluxdict, protdict, rea)
+        slope = get_coefficient(flux_prot)
+        if slope != 'nan':
+            reaction_slope.loc[rea, 'p'] = slope
+        if np.sum(flux_prot.loc[:, 'flux']) > 0.000001:
+            cc += 1
+    print(cc)
+    c = 0
+    for r in reaction_slope.loc[:, 'p']:
+        if r != 'nan':
+            c += 1
+    print(c)
+    return reaction_slope, cc, c
+
+
 def get_id(sub):
     y9 = pd.read_excel(r"C:\Users\yuhuzhouye\Desktop\yeast9_w\yeast-GEM.xlsx")
     y9.index = y9.loc[:, 'ID']
@@ -42,11 +61,20 @@ def get_id(sub):
     return rxn
 
 
+def z_score(data):
+    std_data = {}
+    for k, v in data.items():
+        new = v.copy()
+        val = [(i-np.mean(v.iloc[:, 1]))/np.std(v.iloc[:, 1]) for i in v.iloc[:, 1]]
+        new.iloc[:, 1] = val
+        std_data[k] = new
+    return std_data
 
-[modelphe_Nlim_01, modelile_Nlim_01, modelNH4_Nlim_035,
- modelNH4_Nlim_030, modelNH4_Nlim_018, modelNH4_Nlim_013,
- modelCN115, modelCN50, modelCN30, modelNH4_Nlim_01,
- modelNH4_Nlim_005, modelgln_Nlim_01] = load_csmodel()
+
+[modelCN115, modelCN50, modelCN30, modelphe_Nlim_01,
+modelile_Nlim_01, modelNH4_Nlim_035, modelNH4_Nlim_030,
+modelNH4_Nlim_018, modelNH4_Nlim_013, modelNH4_Nlim_01,
+modelNH4_Nlim_005, modelgln_Nlim_01] = load_csmodel()
 modelname = ['modelCN115', 'modelCN50', 'modelCN30', 'modelphe_Nlim_01',
              'modelile_Nlim_01', 'modelNH4_Nlim_035', 'modelNH4_Nlim_030',
              'modelNH4_Nlim_018', 'modelNH4_Nlim_013', 'modelNH4_Nlim_01',
@@ -65,10 +93,12 @@ allg = 'sample'
 # get flux and protein data
 model_fluxdict = {}
 condition_prodict = {}
+print('compute flux')
 for m, mo in zip(modelname, modellist):
-    print(mo)
+    print(m)
     tempflux = getflux(mo, allg, m)
     model_fluxdict[m] = tempflux
+print('compute protein')
 for c in conditionname:
     tempprot = getpro(c)
     condition_prodict[c] = tempprot
@@ -92,12 +122,19 @@ for con, ke in zip(condition_prodict.values(), condition_prodict.keys()):
     temp.loc[:, 'prot'] = prottemp.values()
     protdict[ke] = temp
 
+
+# z-score
+protdict = z_score(protdict)
+model_fluxdict = z_score(model_fluxdict)
+
 # compute slope
 ID = model_fluxdict['modelCN115'].index.values.tolist()
-all_reaction_slope, all_cc, all_c = get_flux_prot(ID, model_fluxdict, protdict)
+# all_reaction_slope, all_cc, all_c = get_flux_prot(ID, model_fluxdict, protdict)
+all_reaction_slope, all_cc, all_c = get_flux_prot_z(ID, model_fluxdict, protdict)
+
 morethan05 = [r for r in all_reaction_slope.index if all_reaction_slope.loc[r, 'p'] > 0.5]
 m05 = pd.DataFrame(morethan05)
-m05.to_csv(r'./output/m05.csv')
+m05.to_csv(r'./output/m05_sample.csv')
 
 carbon_rxn = get_id(['Citrate cycle (TCA cycle)',
                       'Glycolysis / gluconeogenesis',
@@ -136,16 +173,53 @@ lipid_rxn = get_id(['Glycerophospholipid metabolism',
                     'Arachidonic acid metabolism'])
 lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot(lipid_rxn, model_fluxdict, protdict)
 
+# carbon_rxn = get_id(['Citrate cycle (TCA cycle)',
+#                       'Glycolysis / gluconeogenesis',
+#                       'Pentose phosphate pathway',
+#                       'Fructose and mannose metabolism',
+#                       'Galactose metabolism',
+#                       'Ascorbate and aldarate metabolism',
+#                       'Starch and sucrose metabolism',
+#                       'Amino sugar and nucleotide sugar metabolism',
+#                       'Pyruvate metabolism',
+#                       'Glyoxylate and dicarboxylate metabolism',
+#                       'Propanoate metabolism',
+#                       'Butanoate metabolism',
+#                       'C5-Branched dibasic acid metabolism',
+#                       'Inositol phosphate metabolism'])
+# carbon_reaction_slope, carbon_cc, carbon_c = get_flux_prot_z(carbon_rxn, model_fluxdict, protdict)
+# amino_rxn = get_id(['Alanine, aspartate and glutamate metabolism',
+#                     'Glycine, serine and threonine metabolism',
+#                     'Cysteine and methionine metabolism',
+#                     'Valine, leucine and isoleucine metabolism',
+#                     'Lysine metabolism',
+#                     'Arginine biosynthesis',
+#                     'Arginine and proline metabolism',
+#                     'Histidine metabolism',
+#                     'Tyrosine metabolism',
+#                     'Phenylalanine metabolism',
+#                     'Tryptophan metabolism',
+#                     'Phenylalanine, tyrosine and tryptophan biosynthesis'])
+# amino_reaction_slope, amino_cc, amino_c = get_flux_prot_z(amino_rxn, model_fluxdict, protdict)
+# lipid_rxn = get_id(['Glycerophospholipid metabolism',
+#                     'Biosynthesis of unsaturated fatty acids',
+#                     'Glycerolipid metabolism',
+#                     'Steroid biosynthesis',
+#                     'Fatty acid biosynthesis',
+#                     'Sphingolipid metabolism',
+#                     'Arachidonic acid metabolism'])
+# lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot_z(lipid_rxn, model_fluxdict, protdict)
+
 reaction_slope = [all_reaction_slope, carbon_reaction_slope,
                   amino_reaction_slope, lipid_reaction_slope]
 histogram(reaction_slope)
 
 
 
-all_reaction_slope.to_csv('./output/all_reaction_slope.csv')
-carbon_reaction_slope.to_csv('./output/carbon_reaction_slope.csv')
-amino_reaction_slope.to_csv('./output/amino_reaction_slope.csv')
-lipid_reaction_slope.to_csv('./output/lipid_reaction_slope.csv')
+all_reaction_slope.to_csv('./output/all_reaction_slope_sample.csv')
+carbon_reaction_slope.to_csv('./output/carbon_reaction_slope_sample.csv')
+amino_reaction_slope.to_csv('./output/amino_reaction_slope_sample.csv')
+# lipid_reaction_slope.to_csv('./output/lipid_reaction_slope_sample.csv')
 
 # all_reaction_slope = pd.read_csv('./output/all_reaction_slope.csv')
 # carbon_reaction_slope = pd.read_csv('./output/carbon_reaction_slope.csv')

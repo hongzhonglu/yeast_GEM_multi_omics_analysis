@@ -71,14 +71,14 @@ for t=3:(width(expr_data))
 end
 if strcmp(dataset, 'main')
     writetable(fluxes, strcat('../output/',carbonsource,'_fluxDataset.csv'), 'WriteRowNames', true);
-    writematrix(dead, strcat('../output/',carbonsource,'_deadDataset.csv'));
-    writematrix(modellb, strcat('../output/',carbonsource,'_LB.csv'));
-    writematrix(modelub, strcat('../output/',carbonsource,'_UB.csv'));
+    %writematrix(dead, strcat('../output/',carbonsource,'_deadDataset.csv'));
+    %writematrix(modellb, strcat('../output/',carbonsource,'_LB.csv'));
+    %writematrix(modelub, strcat('../output/',carbonsource,'_UB.csv'));
 else
     writetable(fluxes, strcat('../output/Double',carbonsource,'_fluxDataset.csv'), 'WriteRowNames', true);
-    writematrix(dead, strcat('../output/Double',carbonsource,'_deadDataset.csv'));
-    writematrix(modellb, strcat('../output/Double',carbonsource,'_LB.csv'));
-    writematrix(modelub, strcat('../output/Double',carbonsource,'_UB.csv'));
+    %writematrix(dead, strcat('../output/Double',carbonsource,'_deadDataset.csv'));
+    %writematrix(modellb, strcat('../output/Double',carbonsource,'_LB.csv'));
+    %writematrix(modelub, strcat('../output/Double',carbonsource,'_UB.csv'));
 end
  
 end

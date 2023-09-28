@@ -11,6 +11,7 @@
 ###########################################################################
 
 import numpy as np
+import pandas as pd
 import scipy.stats as st
 def get_coefficient(flux_prot):
     conditionname = ['CN115', 'CN50', 'CN30', 'Phe', 'Ile',
@@ -44,6 +45,35 @@ def get_coefficient(flux_prot):
     return slope
 
 
+def get_coefficient_z(flux_prot):
+    conditionname = ['CN115', 'CN50', 'CN30', 'Phe', 'Ile',
+                     'N035', 'N030', 'N018', 'N013',
+                     'N010', 'N005', 'Gln']
+    # get positive flux
+    fluxvalue = flux_prot.loc[:, 'flux'].values.tolist()
+    prottemp = flux_prot.loc[:, 'prot'].values.tolist()
+    if len(str(prottemp[0]).split(' or ')) == 1:
+        # no 'or'
+        protvalue = prottemp
+        slope = pearson_zscore(fluxvalue, protvalue)
+    else:
+        # isoenzyme
+        split_pro = [s.split(' or ') for s in prottemp]
+        slopelist = []
+        for l in range(len(split_pro[0])):
+            protvalue = []
+            for sp in split_pro:
+                protvalue.append(float(sp[l]))
+            tempslope = pearson_zscore(fluxvalue, protvalue)
+            if tempslope != 'nan':
+                slopelist.append(tempslope)
+        if len(slopelist) != 0:
+            slope = np.mean(slopelist)
+        else:
+            slope = 'nan'
+    return slope
+
+
 # linear regression to get slope
 def linear_regression(fluxvalue, protvalue):
     fluxvalue = [float(ff) for ff in fluxvalue]
@@ -60,3 +90,15 @@ def linear_regression(fluxvalue, protvalue):
     else:
         slope = 'nan'
     return slope
+
+def pearson_zscore(fluxvalue, protvalue):
+    fluxvalue = [float(ff) for ff in fluxvalue]
+    protvalue = [float(pp) for pp in protvalue]
+    # data = pd.DataFrame(columns=['f', 'p'])
+    # data.loc[:, 'f'] = fluxvalue
+    # data.loc[:, 'f'] = fluxvalue
+    if len(set(fluxvalue)) > 1 or len(set(protvalue)) > 1:
+        rho = np.corrcoef(fluxvalue, protvalue)
+    else:
+        rho = 'nan'
+    return rho[1, 0]

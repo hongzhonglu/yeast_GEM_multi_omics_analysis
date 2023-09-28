@@ -6,5 +6,3 @@ model = importModel('../data/yeast-GEM.xml');
 [glucosefluxes, glucosedead]=main(model,"glucose",'main');
 disp('finish main');
 
-[glucosefluxes, glucosedead]=main(model,"glucose", 'ITS');
-disp('finish ITS');

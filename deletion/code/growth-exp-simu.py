@@ -56,12 +56,12 @@ font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 12,
          }
-plt.scatter(simu_exp.loc[:, 'simu'],
+plt.scatter((np.log(2)/simu_exp.loc[:, 'simu']),
             simu_exp['exp'],
             alpha=0.3)
-plt.ylabel('log2 of doubling time fold change',
+plt.ylabel('Measured growth rate(h-1)',
            fontdict=font2)
-plt.xlabel('Growth rate(h-1)',
+plt.xlabel('Predicted growth rate(h-1)',
            fontdict=font2)
 plt.xticks(fontproperties='Arial',
            size=16)
