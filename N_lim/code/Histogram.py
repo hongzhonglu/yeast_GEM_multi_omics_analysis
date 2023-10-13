@@ -14,13 +14,14 @@
 
 import matplotlib.pyplot as plt
 
+from matplotlib.pyplot import MultipleLocator
 
 
 def histogram(reaction_slope):
     lable = ['All reactions',
              'Carbohydrate metabolism',
              'Amino acid metbaolism',]
-             #'Lipid metabolism']
+
     plt.figure(figsize=(6, 3))
     for i in [1, 2, 3]:
         plt.subplot(1, 3, i)
@@ -35,6 +36,9 @@ def histogram(reaction_slope):
             plt.hist(data, bins=6, stacked=True, color='#7cd6cf')
         if i == 3:
             plt.hist(data, bins=10, stacked=True, color='#7898e1')
+            y_major_locator = MultipleLocator(3)
+            ax = plt.gca()
+            ax.yaxis.set_major_locator(y_major_locator)
         # if i == 4:
         #     plt.hist(data, bins=5, stacked=True, color='#9987ce')
         # if i == 1:
@@ -54,6 +58,7 @@ def histogram(reaction_slope):
         plt.xlabel(lable[i-1], fontdict=font1)
         plt.xlim(xmax=1.8, xmin=-1.8)
         plt.ylabel('Reaction number', fontdict=font1)
+        plt.xlabel('ρ value')
         # if i == 1 or i == 2:
         #     plt.xticks([])
         # if i == 2 or i == 4:

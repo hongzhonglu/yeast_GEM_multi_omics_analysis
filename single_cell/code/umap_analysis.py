@@ -8,11 +8,45 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+def umapfigure(embedding, a, b):
+    font3 = {'family': 'Arial',
+             'weight': 'normal',
+             'size': 20,
+             }
 
-os.chdir('..')
+    plt.subplots(figsize=(8, 6))
+    plt.scatter(embedding[80:163, a - 1],
+                embedding[80:163, b - 1],
+                s=20,
+                color='#3174A1',
+                alpha=0.6,
+                label='Unstress',
+                )
 
-umap_data = pd.read_excel('../singlecell/output/pfba_flux.xlsx')
-umap_data = umap_data.drop(0, axis=1)
+    plt.scatter(embedding[0:80, a - 1],
+                embedding[0:80, b - 1],
+                s=20,
+                color='#E1812C',
+                alpha=0.6,
+                label='Stress',
+                )
+    plt.xlabel('Dimension {}'.format(str(a)), fontdict=font3)
+    plt.ylabel('Dimension {}'.format(str(b)), fontdict=font3)
+    plt.legend(loc="best",
+               shadow=False,
+               scatterpoints=1,
+               prop=font3)
+    plt.xticks(fontproperties='Arial',
+               size=20)
+    plt.yticks(fontproperties='Arial',
+               size=20)
+    plt.savefig('../output/umap{}{}.jpg'.format(str(a), str(b)),
+                dpi=600)
+    plt.show()
+
+
+umap_data = pd.read_excel('../output/pfba_flux.xlsx')
+umap_data = umap_data.iloc[:, 1:]
 umap_data.loc[:, 'metnum/20'] = umap_data.loc[:, 'metnum/20'] * 20
 umap_data.loc[:, 'rxnnum/20'] = umap_data.loc[:, 'rxnnum/20'] * 20
 
@@ -20,49 +54,6 @@ reducer = umap.UMAP(n_components=3)
 scaled_umap_data = StandardScaler().fit_transform(umap_data)
 embedding = reducer.fit_transform(scaled_umap_data)
 
-
-lw = 2
-y = [0]*80 + [1]*83
-font1 = {'family': 'Arial',
-         'weight': 'normal',
-         'size': 23,
-         }
-font2 = {'family': 'Arial',
-         'weight': 'normal',
-         'size': 20,
-         }
-font3 = {'family': 'Arial',
-         'weight': 'normal',
-         'size': 20,
-         }
-
-figure = plt.subplots(figsize=(8, 6))
-plt.scatter(embedding[80:163, 0],
-            embedding[80:163, 1],
-            s=20,
-            color='#3174A1',
-            alpha=0.6,
-            label='Unstress',
-            )
-
-plt.scatter(embedding[0:80, 0],
-            embedding[0:80, 1],
-            s=20,
-            color='#E1812C',
-            alpha=0.6,
-            label='Stress',
-            )
-plt.xlabel('Dimension 1', fontdict=font3)
-plt.ylabel('Dimension 2', fontdict=font3)
-plt.legend(loc="best",
-           shadow=False,
-           scatterpoints=1,
-           prop=font3)
-# plt.title("Condition clustering", fontdict=font1)
-plt.xticks(fontproperties='Arial',
-           size=20)
-plt.yticks(fontproperties='Arial',
-           size=20)
-plt.savefig('../singlecell/output/umap12.jpg',
-            dpi=600)
-plt.show()
+umapfigure(embedding, 1, 2)
+umapfigure(embedding, 1, 3)
+umapfigure(embedding, 2, 3)

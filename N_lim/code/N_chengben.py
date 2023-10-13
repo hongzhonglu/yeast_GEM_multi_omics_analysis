@@ -11,6 +11,7 @@ import cobra
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+from matplotlib.pyplot import MultipleLocator
 
 os.chdir('..')
 
@@ -24,8 +25,9 @@ def N_chengben(model, rxn):
         tempmedium['r_1714'] = 1000
         model.medium = tempmedium
         model.reactions.get_by_id('r_1714').bounds = (-1000, 0)
+        model.reactions.get_by_id('r_2111').bounds = (0.1, 0.1)
         model.objective = model.reactions.get_by_id('r_1714')
-        model.objective_direction = 'min'
+        model.objective_direction = 'max'
         solu = model.optimize()
         atp.append(solu.objective_value)
     slope, intercept = np.polyfit(intake, atp, 1)
@@ -34,14 +36,14 @@ def N_chengben(model, rxn):
 path = [
     '../N_lim/output/Nlim_model/modelgln_Nlim_01.xml',
     '../N_lim/output/Nlim_model/modelNH4_Nlim_01.xml',
-    '../N_lim/output/Nlim_model/modelile_Nlim_01.xml',
     '../N_lim/output/Nlim_model/modelphe_Nlim_01.xml',
+    '../N_lim/output/Nlim_model/modelile_Nlim_01.xml',
 ]
 rx = [
     'r_1891',
     'r_1654',
-    'r_1897',
     'r_1903',
+    'r_1897',
 ]
 abssl = []
 for m, r in zip(path, rx):
@@ -63,34 +65,24 @@ font3 = {'family': 'Arial',
          }
 
 plt.figure(figsize=(4, 6))
-# plt.barh(y=['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
-#          width=abssl,
-#          height=0.6,
-#          facecolor='#C69C6D',
-#          edgecolor='#000000')
-plt.bar(['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
+plt.bar(['Glutamine', 'Ammonium', 'Phenylalanine', 'Isoleucine'],
         abssl,
         facecolor='#C69C6D',
         edgecolor='#000000')
-# plt.xlabel('Nitrogen Source', fontdict=font2)
-plt.ylabel('Preference Score', fontdict=font2)
+plt.ylabel('Preference score', fontdict=font2)
+
+y_major_locator = MultipleLocator(1)
+ax = plt.gca()
+ax.yaxis.set_major_locator(y_major_locator)
 plt.yticks(fontproperties='Arial',
            size=12)
 plt.xticks(fontproperties='Arial',
            size=12,
            rotation=30)
+plt.ylim(ymin=2)
+
 plt.tight_layout()
 
-# plt.bar(['glutamine', 'ammonium', 'isoleucine', 'phenylalanine'],
-#         abssl,
-#         width=0.35)
-# plt.xlabel('Nitrogen Source', fontdict=font2)
-# plt.ylabel('Preference Score', fontdict=font2)
-# plt.xticks(fontproperties='Arial',
-#            size=18)
-# plt.yticks(fontproperties='Arial',
-#            size=18)
-# plt.tight_layout()
-plt.savefig('../N_lim/output/Preference Score.jpg',
+plt.savefig('../N_lim/output/Preference score.jpg',
             dpi=600)
 plt.show()

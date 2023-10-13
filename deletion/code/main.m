@@ -1,4 +1,4 @@
-%% The following codes are baesd on "www.pnas.org/cgi/doi/10.1073/pnas.2002959117"
+%% The following code is baesd on "www.pnas.org/cgi/doi/10.1073/pnas.2002959117"
 function [fluxes, dead, model]=main(model,carbonsource, dataset)
 [reaction_expression] = getRxnExp();
 [pos_genes_in_react_expr] = getPos(model);

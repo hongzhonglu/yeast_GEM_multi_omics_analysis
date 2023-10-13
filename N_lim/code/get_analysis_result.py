@@ -211,7 +211,7 @@ lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot(lipid_rxn, model_fluxdic
 # lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot_z(lipid_rxn, model_fluxdict, protdict)
 
 reaction_slope = [all_reaction_slope, carbon_reaction_slope,
-                  amino_reaction_slope, lipid_reaction_slope]
+                  amino_reaction_slope]
 histogram(reaction_slope)
 
 

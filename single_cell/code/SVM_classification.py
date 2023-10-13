@@ -9,10 +9,9 @@ import umap
 from sklearn.preprocessing import StandardScaler
 import os
 
-os.chdir('..')
 
-umap_data = pd.read_excel('../singlecell/output/pfba_flux.xlsx')
-umap_data = umap_data.drop(0, axis=1)
+umap_data = pd.read_excel('../output/pfba_flux.xlsx')
+umap_data = umap_data.iloc[:, 1:]
 umap_data.loc[:, 'metnum/20'] = umap_data.loc[:, 'metnum/20'] * 20
 umap_data.loc[:, 'rxnnum/20'] = umap_data.loc[:, 'rxnnum/20'] * 20
 
@@ -87,7 +86,8 @@ for ff in range(len(pre_test)):
         ns_s += 1
 
 print(
-    'accuracy:' + str(test_acc) + '\n' +
+    'Test accuracy:' + str(test_acc) + '\n' +
+    'Train accuracy:' + str(train_acc) + '\n' +
     'ss:' + str(ss) + '\n' +
     's_ns:' + str(s_ns) + '\n' +
     'ns_ns:' + str(ns_ns) + '\n' +

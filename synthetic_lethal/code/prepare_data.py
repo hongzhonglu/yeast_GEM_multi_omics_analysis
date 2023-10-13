@@ -1,9 +1,9 @@
 import pandas as pd
 import cobra
-import logging
 
-model = cobra.io.read_sbml_model(r'C:\Users\yuhuzhouye\Desktop\yeast9_w\yesat9_temp\yeast-GEM.xml')
-data2016 = pd.read_excel(r'D:\model_research\yeast_GEM_multi_omics_analysis\synthetic lethal\data\SGA_NxN_clustered.xlsx')
+
+model = cobra.io.read_sbml_model('../data/yeast-GEM.xml')
+data2016 = pd.read_excel('../data/SGA_NxN_clustered.xlsx')
 data2016.index = data2016.loc[:, 'A']
 ind = data2016.index.values.tolist()
 col = data2016.columns.values.tolist()
@@ -29,4 +29,7 @@ for i in in_ind:
 chongfu = [g for g in in_ind if g in in_col]
 print('{} is repeated'.format(len(chongfu)))
 
-data2016_in.to_excel('./data2016_in_model.xlsx')
+data2016_in.to_excel('../data/data2016_in_model.xlsx')
+pd.Series(in_ind).to_csv('../genelist_row.csv')
+pd.Series(in_col).to_csv('../genelist_col.csv')
+

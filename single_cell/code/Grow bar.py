@@ -8,11 +8,10 @@ import seaborn as sns
 import pandas as pd
 import os
 
-os.chdir('..')
 
-data = pd.read_excel('../singlecell/output/pfba_flux.xlsx')
-stress = data.loc[0:79, 'r_2111']
-unstress = data.loc[80:, 'r_2111']
+data = pd.read_excel('../output/pfba_flux.xlsx')
+stress = data.loc[0:77, 'r_2111']
+unstress = data.loc[78:, 'r_2111']
 
 # Dataset:
 a = pd.DataFrame({'group': np.repeat('Stress', 80), 'value': data.loc[0:79, 'r_2111']})
@@ -38,13 +37,13 @@ sns.violinplot(x='group',
                data=df,
                )
 # add title
-plt.ylim(0.08, 0.0852)
+#plt.ylim(0.08, 0.0852)
 plt.xticks(fontproperties='Arial', size=24)
 plt.yticks(fontproperties='Arial', size=20)
 plt.xlabel('')
 plt.ylabel('Growth rate(h-1)',
            fontdict=font3)
 plt.tight_layout()
-plt.savefig('../singlecell/output/Grow violin.jpg',
+plt.savefig('../output/Grow violin.jpg',
             dpi=800)
 plt.show()

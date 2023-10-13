@@ -50,7 +50,7 @@ font1 = {'family': 'Arial',
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 18,
+         'size': 14,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
