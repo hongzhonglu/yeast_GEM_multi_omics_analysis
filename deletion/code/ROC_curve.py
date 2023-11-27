@@ -46,7 +46,7 @@ plt.subplot(2, 3, 3)
 draw(only_trans_data_500.loc['svm_70', 'true_data'], only_trans_data_500.loc['svm_70', 'pre_pro'],
      only_flux_data_500.loc['svm_70', 'true_data'], only_flux_data_500.loc['svm_70', 'pre_pro'], y=0)
 plt.subplot(2, 3, 4)
-draw(only_trans_data_500.loc['bayes_70', 'true_data'], only_trans_data_200.loc['bayes_70', 'pre_pro'],
+draw(only_trans_data_500.loc['bayes_70', 'true_data'], only_trans_data_500.loc['bayes_70', 'pre_pro'],
      only_flux_data_500.loc['bayes_70', 'true_data'], only_flux_data_500.loc['bayes_70', 'pre_pro'], y=1)
 plt.subplot(2, 3, 5)
 draw(only_trans_data_500.loc['knn_70', 'true_data'], only_trans_data_500.loc['knn_70', 'pre_pro'],

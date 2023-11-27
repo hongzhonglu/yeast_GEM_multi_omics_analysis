@@ -1,7 +1,6 @@
 import pandas as pd
 from sklearn import svm
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score, recall_score
+from sklearn.metrics import accuracy_score, make_scorer, recall_score, precision_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.decomposition import KernelPCA
@@ -17,7 +16,8 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 from sklearn import metrics
 from sklearn.preprocessing import label_binarize
-from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import StratifiedKFold, train_test_split, cross_validate
+
 
 logging.basicConfig(level=logging.DEBUG,
 format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
@@ -45,12 +45,28 @@ def svm_class(ml_data, lable):
         decision_function_shape='ovr',
         probability=True
     )
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(clf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/svm_result.xlsx')
+
     clf.fit(train_data, train_lable)
-    scores = cross_val_score(clf, train_data, train_lable, cv=5)
     pre_train_pro = clf.predict_proba(train_data)
     pre_test_pro = clf.predict_proba(test_data)
     pre_pro = np.vstack((pre_train_pro, pre_test_pro))
-
     pre_train = clf.predict(train_data)
     pre_test = clf.predict(test_data)
     train_acc = accuracy_score(train_lable, pre_train)
@@ -62,7 +78,8 @@ def svm_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
+
 
 
 def MLP_class(ml_data, lable):
@@ -87,6 +104,24 @@ def MLP_class(ml_data, lable):
         max_iter=10,
         random_state=1,
     )
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(clf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/MLP_result.xlsx')
+
     clf.fit(train_data, train_lable)
 
     pre_train_pro = clf.predict_proba(train_data)
@@ -104,7 +139,7 @@ def MLP_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def bayes_class(ml_data, lable):
@@ -116,6 +151,24 @@ def bayes_class(ml_data, lable):
         test_size=0.2,
     )
     gnb = GaussianNB()
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(gnb, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/gnb_result.xlsx')
+
     gnb.fit(train_data, train_lable)
 
     pre_train_pro = gnb.predict_proba(train_data)
@@ -133,7 +186,7 @@ def bayes_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def kpca_reduce(ml_data, components):
@@ -152,6 +205,24 @@ def randomf_class(ml_data, lable):
         test_size=0.2,
     )
     ranf = RandomForestClassifier()
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(ranf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/ranf_result.xlsx')
+
     ranf.fit(train_data, train_lable)
 
     pre_train_pro = ranf.predict_proba(train_data)
@@ -169,7 +240,7 @@ def randomf_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def knn_class(ml_data, lable):
@@ -181,6 +252,24 @@ def knn_class(ml_data, lable):
         test_size=0.2,
     )
     knn = KNeighborsClassifier()
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(knn, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/knn_result.xlsx')
+
     knn.fit(train_data, train_lable)
 
     pre_train_pro = knn.predict_proba(train_data)
@@ -198,7 +287,7 @@ def knn_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def tree_class(ml_data, lable):
@@ -210,6 +299,24 @@ def tree_class(ml_data, lable):
         test_size=0.2,
     )
     clf = DecisionTreeClassifier()
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(clf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/tree_result.xlsx')
+
     clf.fit(train_data, train_lable)
 
     pre_train_pro = clf.predict_proba(train_data)
@@ -227,7 +334,7 @@ def tree_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def gradient_class(ml_data, lable):
@@ -239,6 +346,24 @@ def gradient_class(ml_data, lable):
         test_size=0.2,
     )
     clf = GradientBoostingClassifier(learning_rate=0.01, max_depth=8, n_estimators=50)
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(clf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/gradient_result.xlsx')
+
     clf.fit(train_data, train_lable)
 
     pre_train_pro = clf.predict_proba(train_data)
@@ -256,7 +381,7 @@ def gradient_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def logistic_class(ml_data, lable):
@@ -272,6 +397,24 @@ def logistic_class(ml_data, lable):
         solver="newton-cg",
         max_iter=1000,
     )
+    strKFold = StratifiedKFold(n_splits=5, shuffle=True, random_state=1024)
+    scoring = {
+        'recall': make_scorer(recall_score, average='macro'),
+        'precision': make_scorer(precision_score, average='macro'),
+        'f1': make_scorer(f1_score, average='macro')
+    }
+    scores = cross_validate(clf, ml_data, lable, cv=strKFold, scoring=scoring, return_train_score=True)
+    result = pd.DataFrame(index=['value', 'std'], columns=['Train acc', 'Test acc', 'Test recall', 'Test F score'])
+    result.loc['value', 'Train acc'] = np.mean(scores['train_precision'])
+    result.loc['std', 'Train acc'] = np.std(scores['train_precision'])
+    result.loc['value', 'Test acc'] = np.mean(scores['test_precision'])
+    result.loc['std', 'Test acc'] = np.std(scores['test_precision'])
+    result.loc['value', 'Test recall'] = np.mean(scores['test_recall'])
+    result.loc['std', 'Test recall'] = np.std(scores['test_recall'])
+    result.loc['value', 'Test F score'] = np.mean(scores['test_f1'])
+    result.loc['std', 'Test F score'] = np.std(scores['test_f1'])
+    result.to_excel('../output/logistic_result.xlsx')
+
     clf.fit(train_data, train_lable)
 
     pre_train_pro = clf.predict_proba(train_data)
@@ -289,7 +432,7 @@ def logistic_class(ml_data, lable):
     fscore_t = f1_score(test_lable, pre_test, average="macro")
     recall = recall_score(true_data, pre, average="macro")
     fscore = f1_score(true_data, pre, average="macro")
-    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro
+    return train_acc, test_acc, all_acc, recall, fscore, pre, true_data, recall_t, fscore_t, pre_pro, result
 
 
 def prepare_mldata(sortedgene, flux_or_trans):
@@ -348,21 +491,21 @@ def roc(ture_data, pre_pro, n, method, reduction, datatype):
 
 
 def run_ml(ml_data, lable, n, components, reduction=False):
-    svmtrain_acc, svmtest_acc, svmall_acc, svmrecall, svmfscore, svmpre, svmtrue_data, svmrecall_t, svmfscore_t, svmprepro = svm_class(ml_data, lable)
+    svmtrain_acc, svmtest_acc, svmall_acc, svmrecall, svmfscore, svmpre, svmtrue_data, svmrecall_t, svmfscore_t, svmprepro, _ = svm_class(ml_data, lable)
     logging.info('svm finished')
-    MLPtrain_acc, MLPtest_acc, MLPall_acc, MLPrecall, MLPfscore, MLPpre, MLPtrue_data, MLPrecall_t, MLPfscore_t, MLPprepro = MLP_class(ml_data, lable)
+    MLPtrain_acc, MLPtest_acc, MLPall_acc, MLPrecall, MLPfscore, MLPpre, MLPtrue_data, MLPrecall_t, MLPfscore_t, MLPprepro, _ = MLP_class(ml_data, lable)
     logging.info('MLP finished')
-    bayestrain_acc, bayestest_acc, bayesall_acc, bayesrecall, bayesfscore, bayespre, bayestrue_data, bayesrecall_t, bayesfscore_t, bayesprepro = bayes_class(ml_data, lable)
+    bayestrain_acc, bayestest_acc, bayesall_acc, bayesrecall, bayesfscore, bayespre, bayestrue_data, bayesrecall_t, bayesfscore_t, bayesprepro, _ = bayes_class(ml_data, lable)
     logging.info('bayes finished')
-    ranftrain_acc, ranftest_acc, ranfall_acc, ranfrecall, ranffscore, ranfpre, ranftrue_data, ranfrecall_t, ranffscore_t, ranfprepro = randomf_class(ml_data, lable)
+    ranftrain_acc, ranftest_acc, ranfall_acc, ranfrecall, ranffscore, ranfpre, ranftrue_data, ranfrecall_t, ranffscore_t, ranfprepro, _ = randomf_class(ml_data, lable)
     logging.info('randf finished')
-    knntrain_acc, knntest_acc, knnall_acc, knnrecall, knnfscore, knnpre, knntrue_data, knnrecall_t, knnfscore_t, knnfprepro = knn_class(ml_data, lable)
+    knntrain_acc, knntest_acc, knnall_acc, knnrecall, knnfscore, knnpre, knntrue_data, knnrecall_t, knnfscore_t, knnfprepro, _ = knn_class(ml_data, lable)
     logging.info('knn finished')
-    treetrain_acc, treetest_acc, treeall_acc, treerecall, treefscore, treepre, treetrue_data, treerecall_t, treefscore_t, treeprepro = tree_class(ml_data, lable)
+    treetrain_acc, treetest_acc, treeall_acc, treerecall, treefscore, treepre, treetrue_data, treerecall_t, treefscore_t, treeprepro, _ = tree_class(ml_data, lable)
     logging.info('tree finished')
     # gratrain_acc, gratest_acc, graall_acc, grarecall = gradient_class(ml_data, lable)
     # logging.info('gra finished')
-    logistictrain_acc, logistictest_acc, logisticall_acc, logisticrecall, logisfscore, logispre, logistrue_data, logisrecall_t, logisfscore_t, logisprepro = logistic_class(ml_data, lable)
+    logistictrain_acc, logistictest_acc, logisticall_acc, logisticrecall, logisfscore, logispre, logistrue_data, logisrecall_t, logisfscore_t, logisprepro, _ = logistic_class(ml_data, lable)
     logging.info('log finished')
     logging.info('finish computing')
     output = pd.DataFrame(index=['svm_{}'.format(n), 'MLP_{}'.format(n), 'bayes_{}'.format(n),
@@ -484,7 +627,8 @@ def from_result_to_output(components):
     only_trans_data = pd.DataFrame()
     only_flux_data = pd.DataFrame()
     trans_flux_data = pd.DataFrame()
-    for thr in [30, 50, 70, 90]:
+    for thr in [70]:
+    # for thr in [30, 50, 70, 90]:
         only_trans, only_flux, trans_flux = get_result(thr, components)
         only_trans_data = pd.concat([only_trans_data, only_trans], axis=0)
         only_flux_data = pd.concat([only_flux_data, only_flux], axis=0)
@@ -494,37 +638,41 @@ def from_result_to_output(components):
 
 # do things
 if __name__ == '__main__':
-    for rd in list(range(5)):
-        print(rd)
-        only_trans_data_off, only_flux_data_off, trans_flux_data_off = from_result_to_output(components=0)
-        only_trans_data_200, only_flux_data_200, trans_flux_data_200 = from_result_to_output(components=200)
+        #only_trans_data_off, only_flux_data_off, trans_flux_data_off = from_result_to_output(components=0)
+        #only_trans_data_200, only_flux_data_200, trans_flux_data_200 = from_result_to_output(components=200)
         only_trans_data_500, only_flux_data_500, trans_flux_data_500 = from_result_to_output(components=500)
-        only_trans_data_800, only_flux_data_800, trans_flux_data_800 = from_result_to_output(components=800)
-        only_trans_data_1000, only_flux_data_1000, trans_flux_data_1000 = from_result_to_output(components=1000)
+        #only_trans_data_800, only_flux_data_800, trans_flux_data_800 = from_result_to_output(components=800)
+        #only_trans_data_1000, only_flux_data_1000, trans_flux_data_1000 = from_result_to_output(components=1000)
 
-        trans = pd.concat([only_trans_data_off, only_trans_data_200,
-                           only_trans_data_500, only_trans_data_800,
-                           only_trans_data_1000], axis=0)
+        # trans = pd.concat([only_trans_data_off, only_trans_data_200,
+        #                    only_trans_data_500, only_trans_data_800,
+        #                    only_trans_data_1000], axis=0)
+        #
+        # flux = pd.concat([only_flux_data_off, only_flux_data_200,
+        #                   only_flux_data_500, only_flux_data_800,
+        #                   only_flux_data_1000], axis=0)
+        #
+        # trans_flux = pd.concat([trans_flux_data_off, trans_flux_data_200,
+        #                         trans_flux_data_500, trans_flux_data_800,
+        #                         trans_flux_data_1000], axis=0)
 
-        flux = pd.concat([only_flux_data_off, only_flux_data_200,
-                          only_flux_data_500, only_flux_data_800,
-                          only_flux_data_1000], axis=0)
-
-        trans_flux = pd.concat([trans_flux_data_off, trans_flux_data_200,
-                                trans_flux_data_500, trans_flux_data_800,
-                                trans_flux_data_1000], axis=0)
-
-        writer = pd.ExcelWriter('../output/ML_result{}.xlsx'.format(rd))
-        sheet_name1 = 'only trans'
-        trans.to_excel(
-            excel_writer=writer,
-            sheet_name=sheet_name1)
-        sheet_name2 = 'only flux'
-        flux.to_excel(
-            excel_writer=writer,
-            sheet_name=sheet_name2)
-        sheet_name3 = 'trans and flux'
-        trans_flux.to_excel(
-            excel_writer=writer,
-            sheet_name=sheet_name3)
-        writer.save()
+        # trans = pd.concat([only_trans_data_500], axis=0)
+        #
+        # flux = pd.concat([only_flux_data_500], axis=0)
+        #
+        # trans_flux = pd.concat([trans_flux_data_500], axis=0)
+        #
+        # writer = pd.ExcelWriter('../output/ML_result_500.xlsx')
+        # sheet_name1 = 'only trans'
+        # trans.to_excel(
+        #     excel_writer=writer,
+        #     sheet_name=sheet_name1)
+        # sheet_name2 = 'only flux'
+        # flux.to_excel(
+        #     excel_writer=writer,
+        #     sheet_name=sheet_name2)
+        # sheet_name3 = 'trans and flux'
+        # trans_flux.to_excel(
+        #     excel_writer=writer,
+        #     sheet_name=sheet_name3)
+        # writer.save()

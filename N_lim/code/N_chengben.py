@@ -53,15 +53,15 @@ for m, r in zip(path, rx):
 
 font1 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 23,
+         'size': 28,
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 14,
+         'size': 24,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 12,
+         'size': 20,
          }
 
 plt.figure(figsize=(4, 6))
@@ -75,9 +75,9 @@ y_major_locator = MultipleLocator(1)
 ax = plt.gca()
 ax.yaxis.set_major_locator(y_major_locator)
 plt.yticks(fontproperties='Arial',
-           size=12)
+           size=20)
 plt.xticks(fontproperties='Arial',
-           size=12,
+           size=16,
            rotation=30)
 plt.ylim(ymin=2)
 
@@ -86,3 +86,4 @@ plt.tight_layout()
 plt.savefig('../N_lim/output/Preference score.jpg',
             dpi=600)
 plt.show()
+

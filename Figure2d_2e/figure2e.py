@@ -19,18 +19,18 @@ r1 = np.arange(len(bars1))
 r2 = [x + 1.2*barWidth for x in r1]
 
 # Create blue bars
-plt.bar(r1, bars1, width=barWidth, color='#6f9bc6', edgecolor='black', capsize=7, label='yeast 9')
+plt.bar(r2, bars1, width=barWidth, color='#6f9bc6', edgecolor='black', capsize=7, label='yeast 9')
 
 # Create cyan bars
-plt.bar(r2, bars2, width=barWidth, color='#f3993a', edgecolor='black', capsize=7, label='yeast 8.3')
+plt.bar(r1, bars2, width=barWidth, color='#f3993a', edgecolor='black', capsize=7, label='yeast 8.3')
 
 font1 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 16,
+         'size': 20,
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 20,
+         'size': 22,
          }
 
 # general layout
@@ -38,10 +38,10 @@ plt.xticks([r + 1.2*barWidth/2 for r in range(len(bars1))],
            ['Gene essentiality', 'Memote total score'],
            )
 plt.ylabel('Percentage (%)', fontdict=font2)
-plt.yticks(np.arange(0, 100, 10), fontproperties = 'Arial', size = 14)
-plt.xticks(fontproperties = 'Arial', size = 14)
+plt.yticks(np.arange(0, 100, 10), fontproperties='Arial', size=20)
+plt.xticks(fontproperties='Arial', size=20)
 
-font = {'family': 'Arial', 'weight': 'normal', 'size': 15}
+font = {'family': 'Arial', 'weight': 'normal', 'size': 18}
 legend = plt.legend(prop=font)
 # Show graphic
 plt.tight_layout()

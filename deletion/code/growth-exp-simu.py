@@ -50,7 +50,7 @@ font1 = {'family': 'Arial',
          }
 font2 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 14,
+         'size': 20,
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
@@ -64,9 +64,9 @@ plt.ylabel('Measured growth rate(h-1)',
 plt.xlabel('Predicted growth rate(h-1)',
            fontdict=font2)
 plt.xticks(fontproperties='Arial',
-           size=16)
+           size=20)
 plt.yticks(fontproperties='Arial',
-           size=16)
+           size=20)
 plt.tight_layout()
 plt.savefig('../deletion/output/growth_exp_simu.jpg')
 plt.show()

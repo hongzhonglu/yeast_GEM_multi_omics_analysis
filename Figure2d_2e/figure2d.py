@@ -68,8 +68,10 @@ if __name__ == '__main__':
          bottom8.append(sum)
     plt.axes().set_facecolor('white')
     plt.figure(figsize=(8, 6))
-    plt.bar(r1, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
-    plt.bar(r2, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
+    # plt.bar(r1, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
+    # plt.bar(r2, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
+    plt.bar(r2, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
+    plt.bar(r1, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
 
     # plt.bar(r1, cover9, width=barWidth, bottom=true9, color='#a4d4b0', edgecolor='white', label='substrates coverd by Yeast9')
     # plt.bar(r2, cover8, width=barWidth, bottom=true8, color='#f6b683', edgecolor='white', label='substrates coverd by Yeast8')
@@ -77,18 +79,18 @@ if __name__ == '__main__':
     # plt.bar(r3, whole, width=barWidth, color='#ddedd7', edgecolor='white', label='whole dataset')
     font2 = {'family': 'Arial',
              'weight': 'normal',
-             'size': 20,
+             'size': 24,
              }
     font3 = {'family': 'Arial',
              'weight': 'normal',
-             'size': 15,
+             'size': 16,
              }
 
     plt.ylabel('Substrate Number', fontdict=font2)
     plt.xticks([r + 1.2 *barWidth/2 for r in range(len(sou))],
                ['Carbon', 'Nitrogen', 'Phosphorus', 'Sulfur'],
-               fontproperties='Arial', size=14)
-    plt.yticks(np.arange(0, 55, 10), fontproperties='Arial', size=14)
+               fontproperties='Arial', size=24)
+    plt.yticks(np.arange(0, 55, 10), fontproperties='Arial', size=24)
     plt.tick_params(top=False, bottom=True, left=True, right=False)
     plt.legend(prop=font3)
     plt.tight_layout()

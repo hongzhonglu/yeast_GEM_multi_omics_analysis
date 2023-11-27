@@ -15,7 +15,7 @@ unstress = data.loc[78:, 'r_2111']
 
 # Dataset:
 a = pd.DataFrame({'group': np.repeat('Stress', 80), 'value': data.loc[0:79, 'r_2111']})
-b = pd.DataFrame({'group': np.repeat('Unstress', 83), 'value': data.loc[80:, 'r_2111']})
+b = pd.DataFrame({'group': np.repeat('Unstressed', 83), 'value': data.loc[80:, 'r_2111']})
 df = b.append(a)
 # draw
 font1 = {'family': 'Arial',

@@ -11,7 +11,7 @@ import os
 def umapfigure(embedding, a, b):
     font3 = {'family': 'Arial',
              'weight': 'normal',
-             'size': 20,
+             'size': 24,
              }
 
     plt.subplots(figsize=(8, 6))
@@ -20,7 +20,7 @@ def umapfigure(embedding, a, b):
                 s=20,
                 color='#3174A1',
                 alpha=0.6,
-                label='Unstress',
+                label='Unstressed',
                 )
 
     plt.scatter(embedding[0:80, a - 1],
@@ -37,9 +37,10 @@ def umapfigure(embedding, a, b):
                scatterpoints=1,
                prop=font3)
     plt.xticks(fontproperties='Arial',
-               size=20)
+               size=24)
     plt.yticks(fontproperties='Arial',
-               size=20)
+               size=24)
+    plt.tight_layout()
     plt.savefig('../output/umap{}{}.jpg'.format(str(a), str(b)),
                 dpi=600)
     plt.show()

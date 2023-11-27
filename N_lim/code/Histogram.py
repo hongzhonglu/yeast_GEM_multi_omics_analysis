@@ -52,13 +52,14 @@ def histogram(reaction_slope):
 
         font1 = {'family': 'Arial',
                  'weight': 'normal',
-                 'size': 12,
+                 'size': 18,
                  }
         plt.rc('font', **font1)
         plt.xlabel(lable[i-1], fontdict=font1)
         plt.xlim(xmax=1.8, xmin=-1.8)
         plt.ylabel('Reaction number', fontdict=font1)
-        plt.xlabel('ρ value')
+        plt.yticks(fontproperties='Arial', size=18)
+        plt.xlabel('ρ value', fontdict=font1)
         # if i == 1 or i == 2:
         #     plt.xticks([])
         # if i == 2 or i == 4:
