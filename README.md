@@ -4,6 +4,6 @@
 
 `./deletion` is for simulation pconstrained with large-scale transcriptomic.
 
-`./Figure2d_2e` generates fig2d and fig2e.
+`./Basic assessment` evaluates GEMs basic fucntion.
 
 `./synthetic_lethal` is for synthetic lethal simulation.
