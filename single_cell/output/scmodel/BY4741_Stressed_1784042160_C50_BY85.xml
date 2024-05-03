@@ -22,7 +22,6 @@
       <species metaid="s_0009" id="s_0009" name="(2R,3S)-3-isopropylmalate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C7H10O5"/>
       <species metaid="s_0010" id="s_0010" name="(2S)-2-isopropyl-3-oxosuccinate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C7H8O5"/>
       <species metaid="s_0011" id="s_0011" name="(2S)-2-isopropyl-3-oxosuccinate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C7H8O5"/>
-      <species metaid="s_0012" id="s_0012" name="(2S,3R)-3-hydroxybutane-1,2,3-tricarboxylic acid" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="C7H7O7"/>
       <species metaid="s_0015" id="s_0015" name="(N(omega)-L-arginino)succinic acid" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C10H17N4O6"/>
       <species metaid="s_0016" id="s_0016" name="(R)-2,3-dihydroxy-3-methylbutanoate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C5H9O4"/>
       <species metaid="s_0017" id="s_0017" name="(R)-4&apos;-phosphopantothenic acid" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="C9H15NO8P"/>
@@ -113,7 +112,6 @@
       <species metaid="s_0171" id="s_0171" name="2-methylbutanol" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H12O"/>
       <species metaid="s_0172" id="s_0172" name="2-methylbutyl acetate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C7H14O2"/>
       <species metaid="s_0173" id="s_0173" name="2-methylbutyl acetate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C7H14O2"/>
-      <species metaid="s_0174" id="s_0174" name="2-methylcitrate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="C7H7O7"/>
       <species metaid="s_0176" id="s_0176" name="2-oxoadipic acid" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C6H6O5"/>
       <species metaid="s_0177" id="s_0177" name="2-oxoadipic acid" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C6H6O5"/>
       <species metaid="s_0178" id="s_0178" name="2-oxobutanoate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C4H5O3"/>
@@ -263,7 +261,6 @@
       <species metaid="s_0373" id="s_0373" name="acetyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C23H34N7O17P3S"/>
       <species metaid="s_0376" id="s_0376" name="acetyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C23H34N7O17P3S"/>
       <species metaid="s_0377" id="s_0377" name="acetyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C23H34N7O17P3S"/>
-      <species metaid="s_0378" id="s_0378" name="acetyl-CoA" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C23H34N7O17P3S"/>
       <species metaid="s_0383" id="s_0383" name="adenine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H5N5"/>
       <species metaid="s_0384" id="s_0384" name="adenine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H5N5"/>
       <species metaid="s_0385" id="s_0385" name="adenine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H5N5"/>
@@ -1404,14 +1401,15 @@
       <species metaid="s_3093" id="s_3093" name="CTP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C9H12N3O14P3"/>
       <species metaid="s_3094" id="s_3094" name="H+" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="1" fbc:chemicalFormula="H"/>
       <species metaid="s_3095" id="s_3095" name="diphosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="HO7P2"/>
+      <species metaid="s_3096" id="s_3096" name="CDP-diacylglycerol (1-16:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C44H79N3O15P2"/>
       <species metaid="s_3097" id="s_3097" name="phosphatidate (1-16:1, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C35H65O8P"/>
-      <species metaid="s_3098" id="s_3098" name="CDP-diacylglycerol (1-16:1, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C44H77N3O15P2"/>
       <species metaid="s_3099" id="s_3099" name="phosphatidate (1-18:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C37H71O8P"/>
       <species metaid="s_3100" id="s_3100" name="CDP-diacylglycerol (1-18:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C46H83N3O15P2"/>
       <species metaid="s_3101" id="s_3101" name="phosphatidate (1-18:1, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C37H69O8P"/>
-      <species metaid="s_3102" id="s_3102" name="CDP-diacylglycerol (1-18:1, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C46H81N3O15P2"/>
       <species metaid="s_3103" id="s_3103" name="phosphatidate (1-16:0, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C37H71O8P"/>
+      <species metaid="s_3104" id="s_3104" name="CDP-diacylglycerol (1-16:0, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C46H83N3O15P2"/>
       <species metaid="s_3105" id="s_3105" name="phosphatidate (1-16:1, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C37H69O8P"/>
+      <species metaid="s_3106" id="s_3106" name="CDP-diacylglycerol (1-16:1, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C46H81N3O15P2"/>
       <species metaid="s_3107" id="s_3107" name="L-serine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C3H7NO3"/>
       <species metaid="s_3108" id="s_3108" name="CMP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C9H12N3O8P"/>
       <species metaid="s_3109" id="s_3109" name="phosphatidyl-L-serine (1-16:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C38H72NO10P"/>
@@ -1517,7 +1515,6 @@
       <species metaid="s_3217" id="s_3217" name="CDP-choline" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C14H25N4O11P2"/>
       <species metaid="s_3218" id="s_3218" name="glycerol 3-phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C3H7O6P"/>
       <species metaid="s_3219" id="s_3219" name="CMP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C9H12N3O8P"/>
-      <species metaid="s_3222" id="s_3222" name="3-(3-sn-phosphatidyl)-sn-glycerol 1-phosphate (1-18:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C40H78O13P2"/>
       <species metaid="s_3226" id="s_3226" name="H2O" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="H2O"/>
       <species metaid="s_3227" id="s_3227" name="phosphatidylglycerol (1-16:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C38H73O10P"/>
       <species metaid="s_3228" id="s_3228" name="phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="HO4P"/>
@@ -1819,6 +1816,7 @@
       <species metaid="s_3533" id="s_3533" name="phosphatidate (1-18:0, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C39H75O8P"/>
       <species metaid="s_3534" id="s_3534" name="phosphatidate (1-18:1, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C39H73O8P"/>
       <species metaid="s_3536" id="s_3536" name="phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="HO4P"/>
+      <species metaid="s_3540" id="s_3540" name="1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-18:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C43H82O16P2"/>
       <species metaid="s_3544" id="s_3544" name="1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C41H78O16P2"/>
       <species metaid="s_3545" id="s_3545" name="1-phosphatidyl-1D-myo-inositol (1-16:0, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C41H77O13P"/>
       <species metaid="s_3546" id="s_3546" name="1-phosphatidyl-1D-myo-inositol 3-phosphate (1-16:1, 2-16:1)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C41H76O16P2"/>
@@ -2065,9 +2063,7 @@
       <species metaid="s_3881" id="s_3881" name="ATP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-4" fbc:chemicalFormula="C10H12N5O13P3"/>
       <species metaid="s_3882" id="s_3882" name="Ca(2+)" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="2" fbc:chemicalFormula="Ca"/>
       <species metaid="s_3883" id="s_3883" name="ADP" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="C10H12N5O10P2"/>
-      <species metaid="s_3886" id="s_3886" name="Protein asparagine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C4H6N2O2R"/>
       <species metaid="s_3887" id="s_3887" name="G00008" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C108H182N2O77P2R"/>
-      <species metaid="s_3888" id="s_3888" name="Dolichyl diphosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-3" fbc:chemicalFormula="C20H35O7P2R"/>
       <species metaid="s_3889" id="s_3889" name="G00009" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C92H152N4O72R"/>
       <species metaid="s_3890" id="s_3890" name="GDP-alpha-D-mannose" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C16H23N5O16P2"/>
       <species metaid="s_3891" id="s_3891" name="G10694" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C68H112N4O52R"/>
@@ -2078,7 +2074,7 @@
       <species metaid="s_3904" id="s_3904" name="D-Serine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C3H7NO3"/>
       <species metaid="s_3905" id="s_3905" name="O-acetyl-L-serine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H9NO4"/>
       <species metaid="s_3906" id="s_3906" name="hydrogen sulfide" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="HS"/>
-      <species metaid="s_3911" id="s_3911" name="Dolichyl beta-D-glucosyl phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C26H46O9PR"/>
+      <species metaid="s_3911" id="s_3911" name="Dolichyl beta-D-glucosyl phosphate" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="C26H46O9P"/>
       <species metaid="s_3912" id="s_3912" name="G10599" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-2" fbc:chemicalFormula="C102H172N2O72P2R"/>
       <species metaid="s_3925" id="s_3925" name="L-cysteinylglycine" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="0" fbc:chemicalFormula="C5H10N2O3S"/>
       <species metaid="s_3926" id="s_3926" name="chloride" compartment="c" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false" fbc:charge="-1" fbc:chemicalFormula="Cl"/>
@@ -3804,42 +3800,6 @@
           <fbc:geneProductRef fbc:geneProduct="G_YPL028W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_0106" id="r_0106" name="acetyl-CoA C-acyltransferase (octanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0239" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0378" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1258" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YIL160C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_0107" id="r_0107" name="acetyl-CoA C-acyltransferase (decanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0247" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0378" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_0605" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YIL160C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_0109" id="r_0109" name="acetyl-CoA carboxylase, reaction" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -3967,22 +3927,6 @@
           </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_0117" id="r_0117" name="aconitase" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0174" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0012" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YPR002W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_0118" id="r_0118" name="acteylornithine transaminase" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -3999,42 +3943,6 @@
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YOL140W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_0120" id="r_0120" name="acyl-CoA oxidase (decanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0605" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1279" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0840" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1507" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL205W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_0121" id="r_0121" name="acyl-CoA oxidase (dodecanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_1076" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1279" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0840" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1510" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL205W"/>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_0127" id="r_0127" name="acyl-CoA:sterol acyltransferase (oleoyl-CoA:ergosterol), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
@@ -6792,26 +6700,6 @@
             <fbc:geneProductRef fbc:geneProduct="G_YNR067C"/>
             <fbc:geneProductRef fbc:geneProduct="G_YOR190W"/>
           </fbc:or>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_0400" id="r_0400" name="fatty-acid--CoA ligase (dodecanoate)" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0439" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1070" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0426" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_0638" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1076" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YER015W"/>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_0436" id="r_0436" name="ferrochelatase" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
@@ -12364,7 +12252,7 @@
           <fbc:geneProductRef fbc:geneProduct="G_YBR006W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_1024" id="r_1024" name="sucrose hydrolyzing enxyme" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_1024" id="r_1024" name="sucrose hydrolyzing enzyme" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 2</p>
@@ -22480,62 +22368,6 @@
           </fbc:and>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2236" id="r_2236" name="acyl-CoA oxidase (butanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: MetaNetX ID curated (PR #220)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_1279" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2884" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0840" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2886" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL205W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2237" id="r_2237" name="acyl-CoA oxidase (hexanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: MetaNetX ID curated (PR #220)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_1279" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2885" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0840" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2887" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL205W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2238" id="r_2238" name="acyl-CoA oxidase (octanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_1258" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_1279" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0840" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2888" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL205W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_2248" id="r_2248" name="2-enoyl-CoA hydratase (3-hydroxydecanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -23172,59 +23004,6 @@
           <fbc:geneProductRef fbc:geneProduct="G_YKR009C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2283" id="r_2283" name="acetyl-CoA C-acyltransferase (acetyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2914" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0378" stoichiometry="2" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YIL160C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2284" id="r_2284" name="acetyl-CoA C-acyltransferase (butanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2915" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0378" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2884" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YIL160C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2285" id="r_2285" name="acetyl-CoA C-acyltransferase (hexanoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0534" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2916" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0378" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2885" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YIL160C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_2295" id="r_2295" name="delta3,delta2-enoyl-CoA isomerase (cis-dec-3-enoyl-CoA)" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -23412,26 +23191,6 @@
           <fbc:geneProductRef fbc:geneProduct="G_YKR067W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2311" id="r_2311" name="glycerol-3-phosphate acyltransferase (18:1), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1281,1003) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_2783" stoichiometry="2" constant="true"/>
-          <speciesReference species="s_2821" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2934" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_2785" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2938" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YKR067W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_2316" id="r_2316" name="glycerol-3-phosphate acyltransferase (16:0), lipid particle" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -23447,26 +23206,6 @@
         <listOfProducts>
           <speciesReference species="s_0531" stoichiometry="1" constant="true"/>
           <speciesReference species="s_2944" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YKR067W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2317" id="r_2317" name="glycerol-3-phosphate acyltransferase (16:1), lipid particle" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1281,1009) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_0769" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2783" stoichiometry="2" constant="true"/>
-          <speciesReference species="s_2849" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0531" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2945" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YKR067W"/>
@@ -23888,21 +23627,21 @@
           <fbc:geneProductRef fbc:geneProduct="G_YMR165C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2351" id="r_2351" name="PA phosphatase (1-18:1, 2-18:1), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2350" id="r_2350" name="PA phosphatase (1-18:1, 2-16:1), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1281,1043) curated (PR #222)</p>
+            <p>NOTES: model.S(1281,1042) curated (PR #222)</p>
           </body>
         </notes>
         <listOfReactants>
           <speciesReference species="s_2808" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2961" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2960" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_2783" stoichiometry="2" constant="true"/>
           <speciesReference species="s_2966" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2974" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2973" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YMR165C"/>
@@ -25405,25 +25144,6 @@
           <fbc:geneProductRef fbc:geneProduct="G_YBR029C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2435" id="r_2435" name="CDP-diacylglycerol synthase (1-18:1, 2-16:1), ER membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_2783" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_2960" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3083" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_2834" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3087" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YBR029C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
       <reaction metaid="r_2436" id="r_2436" name="CDP-diacylglycerol synthase (1-16:0, 2-18:1), ER membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -25443,7 +25163,7 @@
           <fbc:geneProductRef fbc:geneProduct="G_YBR029C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2441" id="r_2441" name="CDP-diacylglycerol synthase (1-16:1, 2-16:1), mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2442" id="r_2442" name="CDP-diacylglycerol synthase (1-18:0, 2-16:1), mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
@@ -25452,11 +25172,30 @@
         <listOfReactants>
           <speciesReference species="s_3093" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3094" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3097" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3099" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_3095" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3098" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3100" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YBR029C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2445" id="r_2445" name="CDP-diacylglycerol synthase (1-16:1, 2-18:1), mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3093" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3094" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3105" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3095" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3106" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YBR029C"/>
@@ -25831,24 +25570,6 @@
         <listOfProducts>
           <speciesReference species="s_3165" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3170" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGR170W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2483" id="r_2483" name="PS decarboxylase (1-18:1, 2-16:1), vacuolar membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1658,1175) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3171" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3165" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3172" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YGR170W"/>
@@ -26512,6 +26233,25 @@
           <fbc:geneProductRef fbc:geneProduct="G_YOR311C"/>
         </fbc:geneProductAssociation>
       </reaction>
+      <reaction metaid="r_2520" id="r_2520" name="ethanolaminephosphotransferase (1-16:0, 2-16:1), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_2967" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3216" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_2783" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3108" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3181" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YHR123W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
       <reaction metaid="r_2528" id="r_2528" name="cholinephosphotransferase (1-16:0, 2-16:1), ER membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
@@ -26688,80 +26428,61 @@
           </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2538" id="r_2538" name="phosphatidylglycerolphosphate synthase (1-18:0, 2-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2548" id="r_2548" name="CL synthase (1-16:0, 2-16:1, 3-16:0, 4-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1588,1230) curated (PR #222)</p>
+            <p>NOTES: model.S(1588,1240) curated (PR #222)</p>
           </body>
         </notes>
         <listOfReactants>
-          <speciesReference species="s_3100" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3218" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3219" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3222" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YCL004W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2544" id="r_2544" name="PGP phosphatase (1-18:0, 2-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1588,1236) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3222" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3226" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3094" stoichiometry="2" constant="true"/>
-          <speciesReference species="s_3228" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3230" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YHR100C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2556" id="r_2556" name="CL synthase (1-16:1, 2-16:1, 3-18:0, 4-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1588,1248) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3098" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3230" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3094" stoichiometry="2" constant="true"/>
-          <speciesReference species="s_3219" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3242" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YDL142C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2566" id="r_2566" name="CL synthase (1-18:1, 2-16:1, 3-16:0, 4-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(1588,1258) curated (PR #222)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3102" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3096" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3227" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_3094" stoichiometry="2" constant="true"/>
           <speciesReference species="s_3219" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3252" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3234" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YDL142C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2563" id="r_2563" name="CL synthase (1-18:0, 2-16:1, 3-18:1, 4-16:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+            <p>NOTES: model.S(1588,1255) curated (PR #222)</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3100" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3231" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3094" stoichiometry="2" constant="true"/>
+          <speciesReference species="s_3219" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3249" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YDL142C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2576" id="r_2576" name="CL synthase (1-16:0, 2-18:1, 3-16:0, 4-18:1), mitochondrial membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+            <p>NOTES: model.S(1588,1268) curated (PR #222)</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3104" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3232" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3094" stoichiometry="2" constant="true"/>
+          <speciesReference species="s_3219" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3262" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YDL142C"/>
@@ -27451,79 +27172,43 @@
           <fbc:geneProductRef fbc:geneProduct="G_YGR110W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2631" id="r_2631" name="MLCL (2-16:1, 3-16:1, 4-16:1):PC (1-18:1, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2687" id="r_2687" name="MLCL (2-18:1, 3-18:0, 4-16:1):PC (1-18:1, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
           </body>
         </notes>
         <listOfReactants>
-          <speciesReference species="s_3272" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3280" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3302" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="s_3241" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3266" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3303" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2635" id="r_2635" name="MLCL (2-16:1, 3-16:1, 4-16:1):PC (1-18:1, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2701" id="r_2701" name="MLCL (2-18:1, 3-16:0, 4-18:1):PC (1-16:1, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
           </body>
         </notes>
         <listOfReactants>
-          <speciesReference species="s_3272" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3307" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3282" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3298" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="s_3253" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3303" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2649" id="r_2649" name="MLCL (2-16:1, 3-18:1, 4-16:1):PC (1-16:1, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3274" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3305" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3255" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3268" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3299" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2720" id="r_2720" name="MLCL (1-16:0, 2-16:1, 4-16:1):PC (1-16:0, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3284" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3304" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3237" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3297" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2751" id="r_2751" name="MLCL (1-18:0, 2-16:1, 4-16:1):PC (1-18:1, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2748" id="r_2748" name="MLCL (1-18:0, 2-16:1, 4-16:1):PC (1-16:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
@@ -27531,53 +27216,35 @@
         </notes>
         <listOfReactants>
           <speciesReference species="s_3288" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3302" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3247" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3303" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2756" id="r_2756" name="MLCL (1-18:0, 2-16:1, 4-18:1):PC (1-16:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3289" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3296" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="s_3251" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3247" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3297" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2769" id="r_2769" name="MLCL (1-18:1, 2-16:1, 4-16:1):PC (1-16:1, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2752" id="r_2752" name="MLCL (1-18:0, 2-16:1, 4-16:1):PC (1-16:0, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
           </body>
         </notes>
         <listOfReactants>
-          <speciesReference species="s_3290" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3305" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3288" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3304" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
-          <speciesReference species="s_3255" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3299" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3249" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3297" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_2782" id="r_2782" name="MLCL (1-16:0, 2-18:1, 4-16:1):PC (1-18:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_2780" id="r_2780" name="MLCL (1-16:0, 2-18:1, 4-16:1):PC (1-16:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
@@ -27585,10 +27252,64 @@
         </notes>
         <listOfReactants>
           <speciesReference species="s_3292" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3300" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3296" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_3259" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3297" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2796" id="r_2796" name="MLCL (1-16:1, 2-18:1, 4-16:1):PC (1-16:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3294" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3296" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3265" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3297" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2798" id="r_2798" name="MLCL (1-16:1, 2-18:1, 4-16:1):PC (1-18:0, 2-16:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3294" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3300" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3265" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3301" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:geneProductRef fbc:geneProduct="G_YPR140W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_2802" id="r_2802" name="MLCL (1-16:1, 2-18:1, 4-16:1):PC (1-18:0, 2-18:1) acyltransferase, mitochondrial membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3294" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3306" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3267" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3301" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
@@ -27714,6 +27435,29 @@
           <speciesReference species="s_3307" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3321" stoichiometry="1" constant="true"/>
         </listOfProducts>
+      </reaction>
+      <reaction metaid="r_2820" id="r_2820" name="phosphatidylinositol 4-kinase (1-16:0, 2-16:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+            <p>NOTES: model.S(600,1504) curated (PR #222)</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0793" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2856" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3323" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_3324" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3325" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="G_YJL100W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YLR305C"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_2836" id="r_2836" name="phosphatidylinositol 4-kinase (1-16:0, 2-16:1), Golgi membrane" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
@@ -28537,42 +28281,6 @@
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YFR019W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2903" id="r_2903" name="PE (1-18:1, 2-16:1) diacylglycerol (1-18:0, 2-16:1) acyltransferase, ER membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_2971" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3189" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3023" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3427" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YNR008W"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_2915" id="r_2915" name="PE (1-18:1, 2-18:1) diacylglycerol (1-18:1, 2-16:1) acyltransferase, ER membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 3</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_2973" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3197" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_3041" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3427" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YNR008W"/>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_3034" id="r_3034" name="PC phospholipase B (1-16:0, 2-16:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
@@ -29703,21 +29411,21 @@
           <fbc:geneProductRef fbc:geneProduct="G_YKR031C"/>
         </fbc:geneProductAssociation>
       </reaction>
-      <reaction metaid="r_3111" id="r_3111" name="PC phospholipase D (1-18:1, 2-18:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+      <reaction metaid="r_3109" id="r_3109" name="PC phospholipase D (1-16:1, 2-18:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
         <notes>
           <body xmlns="http://www.w3.org/1999/xhtml">
             <p>Confidence Level: 3</p>
-            <p>NOTES: model.S(600,1785) curated (PR #222)</p>
+            <p>NOTES: model.S(600,1783) curated (PR #222)</p>
           </body>
         </notes>
         <listOfReactants>
           <speciesReference species="s_0793" stoichiometry="1" constant="true"/>
           <speciesReference species="s_3449" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3462" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3460" stoichiometry="1" constant="true"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_0511" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3534" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3532" stoichiometry="1" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YKR031C"/>
@@ -30553,6 +30261,52 @@
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YKL212W"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3180" id="r_3180" name="PI 3,5-P2 phosphatase (1-16:0, 2-18:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+            <p>NOTES: model.S(600,1854) curated (PR #222)</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_3449" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3596" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0793" stoichiometry="2" constant="true"/>
+          <speciesReference species="s_3536" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3540" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="G_YNL106C"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YOR109W"/>
+          </fbc:or>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3184" id="r_3184" name="PI 3,5-P2 phosphatase (1-16:0, 2-16:1), cytoplasm" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+            <p>NOTES: model.S(601,1858) curated (PR #222)</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0803" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3600" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0794" stoichiometry="2" constant="true"/>
+          <speciesReference species="s_1322" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3544" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:or>
+            <fbc:geneProductRef fbc:geneProduct="G_YNL106C"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YOR109W"/>
+          </fbc:or>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_3192" id="r_3192" name="PI 4,5-P2 phosphatase (1-16:0, 2-16:1), cell envelope" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
@@ -34060,6 +33814,132 @@
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YDR072C"/>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3432" id="r_3432" name="IPC synthase (PI (1-16:0, 2-18:1) ceramide-1 (C24))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0476" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3368" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0895" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2998" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3433" id="r_3433" name="IPC synthase (PI (1-16:1, 2-18:1) ceramide-1 (C24))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0476" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3370" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0895" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3002" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3436" id="r_3436" name="IPC synthase (PI (1-16:0, 2-16:1) ceramide-1 (C26))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0479" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3358" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0898" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2996" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3443" id="r_3443" name="IPC synthase (PI (1-18:1, 2-18:1) ceramide-1 (C26))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0479" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3374" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0898" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3010" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3450" id="r_3450" name="IPC synthase (PI (1-18:0, 2-18:1) ceramide-2&apos; (C24))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0488" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3372" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0907" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3006" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
+        </fbc:geneProductAssociation>
+      </reaction>
+      <reaction metaid="r_3486" id="r_3486" name="IPC synthase (PI (1-18:0, 2-16:1) ceramide-3 (C26))" reversible="false" fast="false" fbc:lowerFluxBound="FB3N0" fbc:upperFluxBound="FB5N1000">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+            <p>Confidence Level: 3</p>
+          </body>
+        </notes>
+        <listOfReactants>
+          <speciesReference species="s_0497" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3364" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="s_0916" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_3004" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <fbc:geneProductAssociation>
+          <fbc:and>
+            <fbc:geneProductRef fbc:geneProduct="G_YDR367W"/>
+            <fbc:geneProductRef fbc:geneProduct="G_YKL004W"/>
+          </fbc:and>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_3508" id="r_3508" name="laurate transport, cytoplasm-ER membrane" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
@@ -43197,6 +43077,7 @@
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="s_2783" stoichiometry="1" constant="true"/>
+          <speciesReference species="s_2820" stoichiometry="1" constant="true"/>
           <speciesReference species="s_4209" stoichiometry="2" constant="true"/>
         </listOfProducts>
         <fbc:geneProductAssociation>
@@ -43556,26 +43437,6 @@
         </listOfProducts>
         <fbc:geneProductAssociation>
           <fbc:geneProductRef fbc:geneProduct="G_YGL167C"/>
-        </fbc:geneProductAssociation>
-      </reaction>
-      <reaction metaid="r_4240" id="r_4240" name="Dolichyl-diphosphooligosaccharide--protein glycosyltransferase subunit STT3 (Oligosaccharyl transferase subunit STT3) (EC 2.4.99.18)" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
-        <notes>
-          <body xmlns="http://www.w3.org/1999/xhtml">
-            <p>Confidence Level: 2</p>
-            <p>NOTES: added after new annotation (PR #142)</p>
-          </body>
-        </notes>
-        <listOfReactants>
-          <speciesReference species="s_3886" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3887" stoichiometry="1" constant="true"/>
-        </listOfReactants>
-        <listOfProducts>
-          <speciesReference species="s_0795" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3888" stoichiometry="1" constant="true"/>
-          <speciesReference species="s_3889" stoichiometry="1" constant="true"/>
-        </listOfProducts>
-        <fbc:geneProductAssociation>
-          <fbc:geneProductRef fbc:geneProduct="G_YGL022W"/>
         </fbc:geneProductAssociation>
       </reaction>
       <reaction metaid="r_4241" id="r_4241" name="Mannosyl-oligosaccharide glucosidase (EC 3.2.1.106) (Processing A-glucosidase I) (Glucosidase I)" reversible="true" fast="false" fbc:lowerFluxBound="FB1N1000" fbc:upperFluxBound="FB5N1000">
@@ -50731,7 +50592,6 @@
       <fbc:geneProduct metaid="G_YGL009C" fbc:id="G_YGL009C" fbc:label="YGL009C"/>
       <fbc:geneProduct metaid="G_YGL012W" fbc:id="G_YGL012W" fbc:label="YGL012W"/>
       <fbc:geneProduct metaid="G_YGL017W" fbc:id="G_YGL017W" fbc:label="YGL017W"/>
-      <fbc:geneProduct metaid="G_YGL022W" fbc:id="G_YGL022W" fbc:label="YGL022W"/>
       <fbc:geneProduct metaid="G_YGL026C" fbc:id="G_YGL026C" fbc:label="YGL026C"/>
       <fbc:geneProduct metaid="G_YGL027C" fbc:id="G_YGL027C" fbc:label="YGL027C"/>
       <fbc:geneProduct metaid="G_YGL037C" fbc:id="G_YGL037C" fbc:label="YGL037C"/>
@@ -52027,7 +51887,6 @@
         <groups:listOfMembers>
           <groups:member groups:idRef="r_0099"/>
           <groups:member groups:idRef="r_0109"/>
-          <groups:member groups:idRef="r_0400"/>
           <groups:member groups:idRef="r_2140"/>
           <groups:member groups:idRef="r_2141"/>
           <groups:member groups:idRef="r_2194"/>
@@ -52050,13 +51909,6 @@
           <groups:member groups:idRef="r_0057"/>
           <groups:member groups:idRef="r_0103"/>
           <groups:member groups:idRef="r_0104"/>
-          <groups:member groups:idRef="r_0106"/>
-          <groups:member groups:idRef="r_0107"/>
-          <groups:member groups:idRef="r_0120"/>
-          <groups:member groups:idRef="r_0121"/>
-          <groups:member groups:idRef="r_2236"/>
-          <groups:member groups:idRef="r_2237"/>
-          <groups:member groups:idRef="r_2238"/>
           <groups:member groups:idRef="r_2248"/>
           <groups:member groups:idRef="r_2249"/>
           <groups:member groups:idRef="r_2250"/>
@@ -52092,9 +51944,6 @@
           <groups:member groups:idRef="r_2280"/>
           <groups:member groups:idRef="r_2281"/>
           <groups:member groups:idRef="r_2282"/>
-          <groups:member groups:idRef="r_2283"/>
-          <groups:member groups:idRef="r_2284"/>
-          <groups:member groups:idRef="r_2285"/>
           <groups:member groups:idRef="r_2295"/>
           <groups:member groups:idRef="r_2296"/>
           <groups:member groups:idRef="r_2297"/>
@@ -52189,9 +52038,7 @@
           <groups:member groups:idRef="r_2308"/>
           <groups:member groups:idRef="r_2309"/>
           <groups:member groups:idRef="r_2310"/>
-          <groups:member groups:idRef="r_2311"/>
           <groups:member groups:idRef="r_2316"/>
-          <groups:member groups:idRef="r_2317"/>
           <groups:member groups:idRef="r_2332"/>
           <groups:member groups:idRef="r_2333"/>
           <groups:member groups:idRef="r_2334"/>
@@ -52205,7 +52052,7 @@
           <groups:member groups:idRef="r_2342"/>
           <groups:member groups:idRef="r_2343"/>
           <groups:member groups:idRef="r_2346"/>
-          <groups:member groups:idRef="r_2351"/>
+          <groups:member groups:idRef="r_2350"/>
           <groups:member groups:idRef="r_2352"/>
           <groups:member groups:idRef="r_2353"/>
           <groups:member groups:idRef="r_2354"/>
@@ -52278,8 +52125,6 @@
           <groups:member groups:idRef="r_2429"/>
           <groups:member groups:idRef="r_2430"/>
           <groups:member groups:idRef="r_2431"/>
-          <groups:member groups:idRef="r_2903"/>
-          <groups:member groups:idRef="r_2915"/>
           <groups:member groups:idRef="r_3224"/>
           <groups:member groups:idRef="r_3225"/>
           <groups:member groups:idRef="r_3226"/>
@@ -52384,9 +52229,9 @@
           <groups:member groups:idRef="r_2432"/>
           <groups:member groups:idRef="r_2433"/>
           <groups:member groups:idRef="r_2434"/>
-          <groups:member groups:idRef="r_2435"/>
           <groups:member groups:idRef="r_2436"/>
-          <groups:member groups:idRef="r_2441"/>
+          <groups:member groups:idRef="r_2442"/>
+          <groups:member groups:idRef="r_2445"/>
           <groups:member groups:idRef="r_2446"/>
           <groups:member groups:idRef="r_2447"/>
           <groups:member groups:idRef="r_2448"/>
@@ -52398,7 +52243,6 @@
           <groups:member groups:idRef="r_2480"/>
           <groups:member groups:idRef="r_2481"/>
           <groups:member groups:idRef="r_2482"/>
-          <groups:member groups:idRef="r_2483"/>
           <groups:member groups:idRef="r_2484"/>
           <groups:member groups:idRef="r_2488"/>
           <groups:member groups:idRef="r_2489"/>
@@ -52432,6 +52276,7 @@
           <groups:member groups:idRef="r_2517"/>
           <groups:member groups:idRef="r_2518"/>
           <groups:member groups:idRef="r_2519"/>
+          <groups:member groups:idRef="r_2520"/>
           <groups:member groups:idRef="r_2528"/>
           <groups:member groups:idRef="r_2529"/>
           <groups:member groups:idRef="r_2530"/>
@@ -52440,10 +52285,9 @@
           <groups:member groups:idRef="r_2533"/>
           <groups:member groups:idRef="r_2534"/>
           <groups:member groups:idRef="r_2535"/>
-          <groups:member groups:idRef="r_2538"/>
-          <groups:member groups:idRef="r_2544"/>
-          <groups:member groups:idRef="r_2556"/>
-          <groups:member groups:idRef="r_2566"/>
+          <groups:member groups:idRef="r_2548"/>
+          <groups:member groups:idRef="r_2563"/>
+          <groups:member groups:idRef="r_2576"/>
           <groups:member groups:idRef="r_2584"/>
           <groups:member groups:idRef="r_2585"/>
           <groups:member groups:idRef="r_2586"/>
@@ -52480,14 +52324,14 @@
           <groups:member groups:idRef="r_2617"/>
           <groups:member groups:idRef="r_2618"/>
           <groups:member groups:idRef="r_2619"/>
-          <groups:member groups:idRef="r_2631"/>
-          <groups:member groups:idRef="r_2635"/>
-          <groups:member groups:idRef="r_2649"/>
-          <groups:member groups:idRef="r_2720"/>
-          <groups:member groups:idRef="r_2751"/>
-          <groups:member groups:idRef="r_2756"/>
-          <groups:member groups:idRef="r_2769"/>
-          <groups:member groups:idRef="r_2782"/>
+          <groups:member groups:idRef="r_2687"/>
+          <groups:member groups:idRef="r_2701"/>
+          <groups:member groups:idRef="r_2748"/>
+          <groups:member groups:idRef="r_2752"/>
+          <groups:member groups:idRef="r_2780"/>
+          <groups:member groups:idRef="r_2796"/>
+          <groups:member groups:idRef="r_2798"/>
+          <groups:member groups:idRef="r_2802"/>
           <groups:member groups:idRef="r_2812"/>
           <groups:member groups:idRef="r_2813"/>
           <groups:member groups:idRef="r_2814"/>
@@ -52551,7 +52395,7 @@
           <groups:member groups:idRef="r_3102"/>
           <groups:member groups:idRef="r_3103"/>
           <groups:member groups:idRef="r_3107"/>
-          <groups:member groups:idRef="r_3111"/>
+          <groups:member groups:idRef="r_3109"/>
           <groups:member groups:idRef="r_4309"/>
         </groups:listOfMembers>
       </groups:group>
@@ -52682,6 +52526,7 @@
           <groups:member groups:idRef="r_2459"/>
           <groups:member groups:idRef="r_2460"/>
           <groups:member groups:idRef="r_2461"/>
+          <groups:member groups:idRef="r_2820"/>
           <groups:member groups:idRef="r_2836"/>
           <groups:member groups:idRef="r_2837"/>
           <groups:member groups:idRef="r_2838"/>
@@ -52762,6 +52607,8 @@
           <groups:member groups:idRef="r_3173"/>
           <groups:member groups:idRef="r_3174"/>
           <groups:member groups:idRef="r_3175"/>
+          <groups:member groups:idRef="r_3180"/>
+          <groups:member groups:idRef="r_3184"/>
           <groups:member groups:idRef="r_3192"/>
           <groups:member groups:idRef="r_3193"/>
           <groups:member groups:idRef="r_3194"/>
@@ -52811,7 +52658,6 @@
           <groups:member groups:idRef="r_0362"/>
           <groups:member groups:idRef="r_4165"/>
           <groups:member groups:idRef="r_4166"/>
-          <groups:member groups:idRef="r_4240"/>
           <groups:member groups:idRef="r_4241"/>
           <groups:member groups:idRef="r_4242"/>
           <groups:member groups:idRef="r_4253"/>
@@ -52977,7 +52823,6 @@
       </groups:group>
       <groups:group sboTerm="SBO:0000633" groups:id="group49" groups:name="Propanoate metabolism" groups:kind="partonomy">
         <groups:listOfMembers>
-          <groups:member groups:idRef="r_0117"/>
           <groups:member groups:idRef="r_1936"/>
         </groups:listOfMembers>
       </groups:group>
@@ -53402,6 +53247,12 @@
           <groups:member groups:idRef="r_3425"/>
           <groups:member groups:idRef="r_3426"/>
           <groups:member groups:idRef="r_3427"/>
+          <groups:member groups:idRef="r_3432"/>
+          <groups:member groups:idRef="r_3433"/>
+          <groups:member groups:idRef="r_3436"/>
+          <groups:member groups:idRef="r_3443"/>
+          <groups:member groups:idRef="r_3450"/>
+          <groups:member groups:idRef="r_3486"/>
         </groups:listOfMembers>
       </groups:group>
       <groups:group sboTerm="SBO:0000633" groups:id="group56" groups:name="Sphingolipid metabolism" groups:kind="partonomy">

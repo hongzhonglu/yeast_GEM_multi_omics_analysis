@@ -1,3 +1,5 @@
+# collect genes contained in Yeast9 from SGA_NxN_clustered.xlsx
+
 import pandas as pd
 import cobra
 
@@ -29,7 +31,7 @@ for i in in_ind:
 chongfu = [g for g in in_ind if g in in_col]
 print('{} is repeated'.format(len(chongfu)))
 
-data2016_in.to_excel('../data/data2016_in_model.xlsx')
-pd.Series(in_ind).to_csv('../genelist_row.csv')
-pd.Series(in_col).to_csv('../genelist_col.csv')
+data2016_in.to_excel('../data/data2016_in_model1.xlsx')
+pd.Series(in_ind).to_csv('../genelist_row1.csv')
+pd.Series(in_col).to_csv('../genelist_col1.csv')
 

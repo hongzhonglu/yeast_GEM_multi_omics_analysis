@@ -15,8 +15,6 @@ pathway.index = pathway.loc[:, 'ID']
 t_data = pd.read_excel('../output/pfba_flux.xlsx')
 
 t_data = t_data.iloc[:, 3:]
-#t_data = t_data.drop('metnum/20', axis=1)
-#t_data = t_data.drop('rxnnum/20', axis=1)
 
 co = t_data.columns.tolist()
 for z in co:
@@ -40,17 +38,6 @@ for te in none_zero_l:
     if r.pvalue > 0.05:
         p_da[te] = r.pvalue
 
-# xiao_path = {k: pathway.loc[k, 'subsystem_unique_@2021_12'] for k in p_xiao.keys()}
-# xiao_path_l = [i for i in xiao_path.values()]
-# set01 = set(xiao_path_l)
-# dict01 = {}
-# for item in set01:
-#     dict01.update({item: xiao_path_l.count(item)})
-# fenlei = pd.Series(dict01)
-# print('总计：' + str(len(none_zero_l)) + "个非零通量\n"
-#       + str(len(p_xiao)) + '个差异显著的通量')
-#
-# xiao_path_S = pd.Series(xiao_path)
 stress_mean = stress.mean()
 unstress_mean = unstress.mean()
 #
@@ -88,5 +75,5 @@ plt.title('t-test of nonzero flux', fontdict=font1)
 plt.legend(name_l,
            bbox_to_anchor=(0.9, 0.9),
            prop=font3)
-plt.savefig('../output/t-test.jpg')
+plt.savefig('../output/t-test.tif')
 plt.show()

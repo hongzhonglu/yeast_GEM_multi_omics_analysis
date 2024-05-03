@@ -12,10 +12,10 @@ filepath = []
 for f in filename:
     filepath.append(file + '/' + f)
 
-model8 = cobra.io.read_sbml_model('../data/yeast-GEM.xml')
-pfba_so = cobra.flux_analysis.pfba(model8)
+model9 = cobra.io.read_sbml_model('../data/yeast-GEM.xml')
+pfba_so = cobra.flux_analysis.pfba(model9)
 
-rxnid = [i.id for i in model8.reactions]
+rxnid = [i.id for i in model9.reactions]
 expid = [e.split('.')[0] for e in filename]
 flux_0 = [0.0]*len(rxnid)
 pca_data = pd.DataFrame(index=rxnid, columns=expid)

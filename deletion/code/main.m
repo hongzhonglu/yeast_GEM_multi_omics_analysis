@@ -70,7 +70,7 @@ for t=3:(width(expr_data))
     end
 end
 if strcmp(dataset, 'main')
-    writetable(fluxes, strcat('../output/',carbonsource,'_fluxDataset.csv'), 'WriteRowNames', true);
+    writetable(fluxes, strcat('../output/',carbonsource,'_fluxDataset1.csv'), 'WriteRowNames', true);
     %writematrix(dead, strcat('../output/',carbonsource,'_deadDataset.csv'));
     %writematrix(modellb, strcat('../output/',carbonsource,'_LB.csv'));
     %writematrix(modelub, strcat('../output/',carbonsource,'_UB.csv'));

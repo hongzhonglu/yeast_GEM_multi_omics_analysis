@@ -37,6 +37,7 @@ simu2 = pd.Series(simutemp2[1:], index=flux2.index.values.tolist()[1:])
 simu_exp2 = pd.DataFrame(index=flux2.index.values.tolist()[1:],
                         columns=['exp', 'simu'])
 
+
 for g in flux2.index.values.tolist()[1:]:
     simu_exp2.loc[g, 'simu'] = simu2.loc[g]
     simu_exp2.loc[g, 'exp'] = exp2.loc[g, 'log2relT']
@@ -56,30 +57,42 @@ font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 12,
          }
-plt.scatter((np.log(2)/simu_exp.loc[:, 'simu']),
-            simu_exp['exp'],
+fig, ax = plt.subplots(figsize=(8, 6))# plt.figure(figsize=(6, 3))
+
+plt.scatter(simu_exp1.loc[:, 'simu'],
+            simu_exp1['exp'],
             alpha=0.3)
-plt.ylabel('Measured growth rate(h-1)',
-           fontdict=font2)
-plt.xlabel('Predicted growth rate(h-1)',
-           fontdict=font2)
+plt.scatter(simu_exp2.loc[:, 'simu'],
+            simu_exp2['exp'],
+            c='#F57D3B',
+            marker='s',
+            alpha=0.8)
 plt.xticks(fontproperties='Arial',
-           size=20)
+           size=20, fontweight='bold')
 plt.yticks(fontproperties='Arial',
-           size=20)
+           size=20, fontweight='bold')
+ax.spines['top'].set_linewidth(2)
+ax.spines['right'].set_linewidth(2)
+ax.spines['bottom'].set_linewidth(2)
+ax.spines['left'].set_linewidth(2)
+
+
+plt.ylim((-0.3, 2))
+plt.xlim((0.08, 0.42))
+plt.xticks([0.1, 0.2, 0.3, 0.4])
 plt.tight_layout()
-plt.savefig('../deletion/output/growth_exp_simu.jpg')
+plt.savefig("../deletion/output/growth_exp_simu.jpg", dpi=600)
 plt.show()
 
 
 # compute PCC and p values
-pccs = np.corrcoef(np.array(simu_exp.loc[:, 'simu'].values.tolist()),
-                   np.array(simu_exp['exp'].values.tolist()))
-pairp = stats.ttest_rel(np.array(simu_exp.loc[:, 'simu'].values.tolist()),
-                        np.array(simu_exp['exp'].values.tolist())
+pccs = np.corrcoef(np.array(simu_exp1.loc[:, 'simu'].values.tolist()),
+                   np.array(simu_exp1['exp'].values.tolist()))
+pairp = stats.ttest_rel(np.array(simu_exp2.loc[:, 'simu'].values.tolist()),
+                        np.array(simu_exp2['exp'].values.tolist())
                         , axis=0, nan_policy='propagate')
 
 print(
-    'PCC:' + str(pccs[0, 1]) +
+    'PCC:' + str(np.floor(100*pccs[0, 1])/100)+
     '\np value:' + str(pairp.pvalue)
 )

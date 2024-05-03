@@ -28,7 +28,7 @@ font2 = {'family': 'Arial',
          }
 font3 = {'family': 'Arial',
          'weight': 'normal',
-         'size': 24,
+         'size': 26,
          }
 # plot violin chart
 plt.subplots(figsize=(8, 6))
@@ -38,8 +38,8 @@ sns.violinplot(x='group',
                )
 # add title
 #plt.ylim(0.08, 0.0852)
-plt.xticks(fontproperties='Arial', size=24)
-plt.yticks(fontproperties='Arial', size=20)
+plt.xticks(fontproperties='Arial', size=26)
+plt.yticks(fontproperties='Arial', size=24)
 plt.xlabel('')
 plt.ylabel('Growth rate(h-1)',
            fontdict=font3)

@@ -11,6 +11,7 @@ import cobra
 import numpy as np
 import os
 import matplotlib.pyplot as plt
+import pandas as pd
 from matplotlib.pyplot import MultipleLocator
 
 os.chdir('..')
@@ -33,6 +34,38 @@ def N_chengben(model, rxn):
     slope, intercept = np.polyfit(intake, atp, 1)
     return slope
 
+
+# def themrConstrain(model):
+#     # themrBack = pd.read_csv(r'../../thermodynamic analysis/output/thermobackw.csv', index_col=False)
+#     themrBack = pd.read_csv(r"D:\model_research\yeast_GEM_multi_omics_analysis\thermodynamic analysis\output\thermobackw.csv", index_col=False)
+#     themrBack = themrBack.columns.tolist()
+#     themrforward = pd.read_csv(r"D:\model_research\yeast_GEM_multi_omics_analysis\thermodynamic analysis\output\thermoforw.csv", index_col=False)
+#     themrforward = themrforward.columns.tolist()
+#     themrbi = pd.read_csv(r"D:\model_research\yeast_GEM_multi_omics_analysis\thermodynamic analysis\output\thermobi.csv", index_col=False)
+#     themrbi = themrbi.columns.tolist()
+#     for r in model.reactions:
+#         for b in themrBack:
+#             if r.id == b:
+#                 model.reactions.get_by_id(b).bounds = (-1000, 0)
+#         for f in themrforward:
+#             if r.id == f:
+#                 model.reactions.get_by_id(f).bounds = (0, 1000)
+#         for bi in themrbi:
+#             if r.id == bi:
+#                 model.reactions.get_by_id(bi).bounds = (-1000, 1000)
+#     # fix NGAM
+#     model.reactions.get_by_id('r_4046').bounds = (0.7, 0.7)
+#     # fix glucose intake
+#     model.reactions.get_by_id('r_1714').bounds = (-1, 1000)
+#
+#     return model
+
+
+def StandardScaler(data):
+    StandardData = [i/np.sum(data) for i in data]
+    return StandardData
+
+
 path = [
     '../N_lim/output/Nlim_model/modelgln_Nlim_01.xml',
     '../N_lim/output/Nlim_model/modelNH4_Nlim_01.xml',
@@ -48,8 +81,12 @@ rx = [
 abssl = []
 for m, r in zip(path, rx):
     model = cobra.io.read_sbml_model(m)
+    # medium = model.medium
+    # #model = themrConstrain(model)
+    # model.medium = medium
     slope = N_chengben(model, r)
     abssl.append(abs(slope))
+abssl = StandardScaler(abssl)
 
 font1 = {'family': 'Arial',
          'weight': 'normal',
@@ -69,17 +106,18 @@ plt.bar(['Glutamine', 'Ammonium', 'Phenylalanine', 'Isoleucine'],
         abssl,
         facecolor='#C69C6D',
         edgecolor='#000000')
-plt.ylabel('Preference score', fontdict=font2)
+plt.ylabel('Scaled preference score', fontdict=font2)
 
 y_major_locator = MultipleLocator(1)
 ax = plt.gca()
-ax.yaxis.set_major_locator(y_major_locator)
+#ax.yaxis.set_major_locator(y_major_locator)
 plt.yticks(fontproperties='Arial',
-           size=20)
+           size=18)
 plt.xticks(fontproperties='Arial',
-           size=16,
+           size=18,
            rotation=30)
-plt.ylim(ymin=2)
+plt.ylim(ymax=0.38)
+plt.ylim(ymin=0.15)
 
 plt.tight_layout()
 

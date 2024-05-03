@@ -11,16 +11,16 @@ import numpy as np
 
 os.chdir('..')
 # prepare figure data
-goile = pd.read_table('../N_lim/output/ile_GO.txt')
-gophe = pd.read_table('../N_lim/output/phe_GO.txt')
+# goile = pd.read_table('../N_lim/output/ile_GO.txt')
+# gophe = pd.read_table('../N_lim/output/phe_GO.txt')
 gosame = pd.read_table('../N_lim/output/Phe_Ile_same.txt')
-ile4 = goile[goile['PValue'] < 0.0001]
-phe4 = gophe[gophe['PValue'] < 0.0001]
-same4 = gosame[gophe['PValue'] < 0.0001]
-for i in ile4.index.values.tolist():
-    ile4.loc[i, 'Term'] = ile4.loc[i, 'Term'].split('~')[1]
-for i in phe4.index.values.tolist():
-    phe4.loc[i, 'Term'] = phe4.loc[i, 'Term'].split('~')[1]
+# ile4 = goile[goile['PValue'] < 0.0001]
+# phe4 = gophe[gophe['PValue'] < 0.0001]
+same4 = gosame[gosame['PValue'] < 0.0001]
+# for i in ile4.index.values.tolist():
+#     ile4.loc[i, 'Term'] = ile4.loc[i, 'Term'].split('~')[1]
+# for i in phe4.index.values.tolist():
+#     phe4.loc[i, 'Term'] = phe4.loc[i, 'Term'].split('~')[1]
 for i in same4.index.values.tolist():
     same4.loc[i, 'Term'] = same4.loc[i, 'Term'].split('~')[1]
 # draw
@@ -31,7 +31,7 @@ def num2color(values, cmap):
     return [cmap(norm(val)) for val in values]
 
 
-colors = num2color(ile4.loc[:, 'PValue'],
+colors = num2color(same4.loc[:, 'PValue'],
                    "YlOrRd")
 font1 = {'family': 'Arial',
          'weight': 'normal',
@@ -45,51 +45,51 @@ font3 = {'family': 'Arial',
          'weight': 'normal',
          'size': 16,
          }
-plt.subplots(figsize=(8, 6))
-plt.title('Isoleucine',
-          fontdict=font1)
-plt.barh(y=ile4.Term,
-         color=colors,
-         width=ile4.Count,
-         edgecolor='#000000')
-plt.xlabel('Gene number',
-           fontdict=font2)
-plt.yticks(fontproperties='Arial',
-           size=10)
-plt.xticks(fontproperties='Arial',
-           size=16)
-plt.tight_layout()
-plt.savefig(
-    '../N_lim/output/ile_GO_bar.jpg',
-    dpi=800
-)
-plt.show()
-
-######################################
-# fu
-colors = num2color(phe4.loc[:, 'PValue'],
-                   "YlOrRd")
-
-plt.subplots(figsize=(8, 6))
-plt.title('Phenylalanine',
-          fontdict=font1)
-plt.barh(y=phe4.Term,
-         color=colors,
-         width=phe4.Count,
-         edgecolor='#000000')
-plt.xlabel('Gene number',
-           fontdict=font2)
-plt.yticks(fontproperties='Arial',
-           size=10)
-plt.xticks(fontproperties='Arial',
-           size=16)
-plt.tight_layout()
-plt.savefig(
-    '../N_lim/output/phe_GO_bar.jpg',
-    dpi=600
-)
-plt.show()
-
+# plt.subplots(figsize=(8, 6))
+# plt.title('Isoleucine',
+#           fontdict=font1)
+# plt.barh(y=ile4.Term,
+#          color=colors,
+#          width=ile4.Count,
+#          edgecolor='#000000')
+# plt.xlabel('Gene number',
+#            fontdict=font2)
+# plt.yticks(fontproperties='Arial',
+#            size=10)
+# plt.xticks(fontproperties='Arial',
+#            size=16)
+# plt.tight_layout()
+# plt.savefig(
+#     '../N_lim/output/ile_GO_bar.jpg',
+#     dpi=800
+# )
+# plt.show()
+#
+# ######################################
+# # fu
+# colors = num2color(phe4.loc[:, 'PValue'],
+#                    "YlOrRd")
+#
+# plt.subplots(figsize=(8, 6))
+# plt.title('Phenylalanine',
+#           fontdict=font1)
+# plt.barh(y=phe4.Term,
+#          color=colors,
+#          width=phe4.Count,
+#          edgecolor='#000000')
+# plt.xlabel('Gene number',
+#            fontdict=font2)
+# plt.yticks(fontproperties='Arial',
+#            size=10)
+# plt.xticks(fontproperties='Arial',
+#            size=16)
+# plt.tight_layout()
+# plt.savefig(
+#     '../N_lim/output/phe_GO_bar.jpg',
+#     dpi=600
+# )
+# plt.show()
+#
 #################################################
 # same
 plt.subplots(figsize=(8, 6))

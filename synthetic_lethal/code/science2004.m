@@ -16,6 +16,8 @@ data2004 = readmatrix("science2004SI.csv", 'OutputType', 'string');
 SGDfile = fopen('SGDgeneNames.tsv', 'r');
 SGD = textscan(SGDfile, '%s %s', 'Delimiter', '\t');
 model = importModel("yeast-GEM.xml");
+model = ravenCobraWrapper(model);
+
 short_all = SGD(1, 2);
 short_all = short_all{1,1};
 sys_all = SGD(1, 1);
@@ -33,6 +35,7 @@ for i = 1:length(data2004)
     g2_sys = short2sys(data2004{i, 2}, short_all, sys_all);
     exp = data2004{i, 5};
     [growth, g1, g2] = doubleGD(model, g1_sys, g2_sys);
+    %[growth, g1, g2] = newdoubleGD(model, g1_sys, g2_sys);
     if length(growth) == 1
         [tp, tn, fp, fn] = simu_exp(growth, exp, tp, tn, fp, fn);
         doubleKO.genepair1{i} = g1;
@@ -44,8 +47,3 @@ for i = 1:length(data2004)
 end
 fprintf('tp=%u\nfp=%u\ntn=%u\nfn=%u\n', tp, fp, tn, fn)
 disp('finish')
-
-writecell(doubleKO.genepair1, 'genepair1.xlsx')
-writecell(doubleKO.genepair2, 'genepair2.xlsx')
-writecell(doubleKO.growth, 'growth.xlsx')
-writecell(doubleKO.exper, 'exper.xlsx')
