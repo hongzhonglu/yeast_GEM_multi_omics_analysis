@@ -101,27 +101,33 @@ font3 = {'family': 'Arial',
          'size': 20,
          }
 
-plt.figure(figsize=(4, 6))
-plt.bar(['Glutamine', 'Ammonium', 'Phenylalanine', 'Isoleucine'],
-        abssl,
-        facecolor='#C69C6D',
-        edgecolor='#000000')
-plt.ylabel('Scaled preference score', fontdict=font2)
+#plt.figure(figsize=(4, 6))
+# plt.barh(['Glutamine', 'Ammonium', 'Phenylalanine', 'Isoleucine'],
+#         abssl,
+#         facecolor='#C69C6D',
+#         edgecolor='#000000')
+bars = ('Glutamine', 'Ammonium', 'Phenylalanine', 'Isoleucine')
+df = pd.DataFrame({
+    'Group': bars,
+    'Value': abssl
+})
+plt.barh(y=df.Group, width=df.Value, facecolor='#C69C6D', edgecolor='#000000')
 
-y_major_locator = MultipleLocator(1)
+plt.xlabel('Scaled preference score', fontdict=font2)
+
+#y_major_locator = MultipleLocator(1)
 ax = plt.gca()
 #ax.yaxis.set_major_locator(y_major_locator)
 plt.yticks(fontproperties='Arial',
            size=18)
 plt.xticks(fontproperties='Arial',
            size=18,
-           rotation=30)
-plt.ylim(ymax=0.38)
-plt.ylim(ymin=0.15)
+           )
+plt.xlim(xmax=0.38)
+plt.xlim(xmin=0.15)
 
 plt.tight_layout()
 
 plt.savefig('../N_lim/output/Preference score.jpg',
             dpi=600)
 plt.show()
-

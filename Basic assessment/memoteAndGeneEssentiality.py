@@ -19,10 +19,10 @@ r1 = np.arange(len(bars1))
 r2 = [x + 1.2*barWidth for x in r1]
 
 # Create blue bars
-plt.bar(r2, bars1, width=barWidth, color='#6f9bc6', edgecolor='black', capsize=7, label='yeast 9')
+plt.bar(r2, bars1, width=barWidth, color='#6f9bc6', edgecolor='black', capsize=7, label='Yeast9')
 
 # Create cyan bars
-plt.bar(r1, bars2, width=barWidth, color='#f3993a', edgecolor='black', capsize=7, label='yeast 8.3')
+plt.bar(r1, bars2, width=barWidth, color='#f3993a', edgecolor='black', capsize=7, label='Yeast8.3.0')
 
 font1 = {'family': 'Arial',
          'weight': 'normal',

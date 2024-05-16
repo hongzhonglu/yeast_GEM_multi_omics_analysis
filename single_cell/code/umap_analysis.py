@@ -30,6 +30,11 @@ def umapfigure(embedding, a, b):
                 alpha=0.6,
                 label='Stress',
                 )
+    ax = plt.gca()
+    ax.spines['top'].set_linewidth(1)
+    ax.spines['right'].set_linewidth(1)
+    ax.spines['bottom'].set_linewidth(1)
+    ax.spines['left'].set_linewidth(1)
     plt.xlabel('Dimension {}'.format(str(a)), fontdict=font3)
     plt.ylabel('Dimension {}'.format(str(b)), fontdict=font3)
     plt.legend(loc="best",
@@ -51,7 +56,7 @@ umap_data = umap_data.iloc[:, 1:]
 umap_data.loc[:, 'metnum/20'] = umap_data.loc[:, 'metnum/20'] * 20
 umap_data.loc[:, 'rxnnum/20'] = umap_data.loc[:, 'rxnnum/20'] * 20
 
-reducer = umap.UMAP(n_neighbors=100, min_dist=0.8, n_components=2, metric='euclidean')
+reducer = umap.UMAP(n_neighbors=100, min_dist=0.5, n_components=2, metric='euclidean')
 scaled_umap_data = StandardScaler().fit_transform(umap_data)
 embedding = reducer.fit_transform(scaled_umap_data)
 

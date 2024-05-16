@@ -26,8 +26,8 @@ logging.basicConfig(level=logging.DEBUG,
 
 
 def kpca_reduce(ml_data):
-    # components = [50, 100, 500, 1000]
-    # kernel = ['linear', 'poly', 'rbf']
+    components = [50, 100, 500, 1000]
+    kernel = ['linear', 'poly', 'rbf']
     #########################################
     # trans
     # gnb/knn best
@@ -42,8 +42,8 @@ def kpca_reduce(ml_data):
     #########################################
     # flux
     # gnb best
-    components = [500]
-    kernel = ['rbf']
+    # components = [500]
+    # kernel = ['rbf']
     # knn best
     # components = [100]
     # kernel = ['rbf']
@@ -137,7 +137,7 @@ def svm_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/svm_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/svm_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -198,7 +198,7 @@ def MLP_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/mlp_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/mlp_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -214,11 +214,11 @@ def bayes_class(X_transformed, lable, data):
             test_size=0.3,
         )
         gnb = GaussianNB()
-        # param_grid = {'var_smoothing': [1e-9, 1e-8, 1e-7, 1e-6, 1e-5]}
+        param_grid = {'var_smoothing': [1e-9, 1e-8, 1e-7, 1e-6, 1e-5]}
         # t
         #param_grid = {'var_smoothing': [1e-9]}
         # f/ft
-        param_grid = {'var_smoothing': [1e-5]}
+        #param_grid = {'var_smoothing': [1e-5]}
 
 
         grid_search = GridSearchCV(gnb, param_grid, cv=2, verbose=2, scoring='accuracy', n_jobs=-1)
@@ -242,7 +242,7 @@ def bayes_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/gnb_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/gnb_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -307,7 +307,7 @@ def randomf_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/rf_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/rf_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -373,7 +373,7 @@ def knn_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/knn_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/knn_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -434,7 +434,7 @@ def logistic_class(X_transformed, lable, data):
     final.sort_values(by='test_acc', inplace=True, ascending=False)
     best = final.iloc[0, :]
     current_time = datetime.now().strftime("%H h %M min")
-    best.to_excel('../output/kpca_Reduction/log_best_{}.xlsx'.format(data))
+    best.to_excel('../output/kpca_Reduction/log_best_{}_22.xlsx'.format(data))
     return best
 
 
@@ -482,7 +482,7 @@ def roc(true_data, pre_pro, n, method, reduction, datatype):
     plt.legend(loc='lower right', fancybox=True, framealpha=0.8, prop=font3)
     plt.title('ROC and AUC of {}'.format(method), fontdict=font2)
     plt.tight_layout()
-    plt.savefig('../output/kpca_Reduction/ROC and AUC of {} {} {} {}.png'.format(method, n, reduction, datatype),
+    plt.savefig('../output/kpca_Reduction/ROC and AUC of {} {} {} {}_22.png'.format(method, n, reduction, datatype),
                 dpi=600,
                 transparent=True)
     plt.show()
@@ -515,24 +515,6 @@ def run_ml(ml_data, lable, n, data):
         logisbest = logistic_class(X_transformed, lable, data)
     except:
         print('bayes error')
-    # output = pd.DataFrame(index=['svm_{}'.format(n), 'MLP_{}'.format(n), 'bayes_{}'.format(n),
-    #                              'randomforest_{}'.format(n), 'knn_{}'.format(n), 'logistic_{}'.format(n)],
-    #                       columns=['true_data', 'pre_pro'])
-    # output.loc['svm_{}'.format(n), 'true_data'] = [svmtrue_data, 'kpca', svmprepro]
-    # output.loc['MLP_{}'.format(n), 'true_data'] = [MLPtrue_data, 'kpca', MLPprepro]
-    # output.loc['bayes_{}'.format(n), 'true_data'] = [bayestrue_data, 'kpca', bayesprepro]
-    # output.loc['randomforest_{}'.format(n), 'true_data'] = [ranftrue_data, 'kpca', ranfprepro]
-    # output.loc['knn_{}'.format(n), 'true_data'] = [knntrue_data, 'kpca', knnprepro]
-    # output.loc['logistic_{}'.format(n), 'true_data'] = [logistrue_data, 'kpca', logisprepro]
-    #
-    # output.loc['svm_{}'.format(n), 'pre_pro'] = [svmtrue_data, 'kpca', svmprepro]
-    # output.loc['MLP_{}'.format(n), 'pre_pro'] = [MLPtrue_data, 'kpca', MLPprepro]
-    # output.loc['bayes_{}'.format(n), 'pre_pro'] = [bayestrue_data, 'kpca', bayesprepro]
-    # output.loc['randomforest_{}'.format(n), 'pre_pro'] = [ranftrue_data, 'kpca', ranfprepro]
-    # output.loc['knn_{}'.format(n), :] = [knntrue_data, 'kpca', knnprepro]
-    # output.loc['logistic_{}'.format(n), 'pre_pro'] = [logistrue_data, 'kpca', logisprepro]
-
-    #return output
 
 
 def prepare_gene_class(n):
@@ -562,13 +544,18 @@ def prepare_gene_class(n):
                 + [9] * 110 + [10] * 44 + [11] * 35 + [12] * 34 \
                 + [13] * 35
     elif n == 70:
-        sortedgene = pd.read_excel('../data/SortedFluxGene_70.xlsx')
+        #sortedgene = pd.read_excel('../data/SortedFluxGene_70.xlsx')
+        sortedgene = pd.read_excel('../data/SortedFluxGene_70_22.xlsx')
         sortedgene.index = sortedgene.loc[:, 'genes']
         for s in sortedgene.index:
             sortedgene.loc[s, 'orf name'] = geneclass.loc[s, 'orf name']
-        lable = [0] * 72 + [1] * 137 \
-                + [2] * 148 + [3] * 92 \
+        # lable = [0] * 72 + [1] * 137 \
+        #         + [2] * 148 + [3] * 92 \
+        #         + [4] * 110
+        lable = [0] * 72 + [1] * 133 \
+                + [2] * 147 + [3] * 86 \
                 + [4] * 110
+
     return sortedgene, lable
 
 
@@ -629,7 +616,7 @@ if __name__ == '__main__':
     ml_flux_data = prepare_mldata(sortedgene, flux_data)
     ft = pd.concat([ml_trans_data, ml_flux_data], axis=1)
     logging.info('data loaded')
-    #run_ml(ml_flux_data, lable, n, 'flux')
-    # run_ml(ft, lable, n, 'ft')
-    # run_ml(ml_trans_data, lable, n, 'trans')
-# report = classification_report(y, predictions)
+    run_ml(ml_flux_data, lable, n, 'flux')
+    run_ml(ft, lable, n, 'ft')
+    run_ml(ml_trans_data, lable, n, 'trans')
+    #report = classification_report(y, predictions)

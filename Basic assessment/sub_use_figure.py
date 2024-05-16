@@ -1,5 +1,5 @@
 import pandas as pd
-
+import numpy as np
 # remove repeated metabolites (acetate, raffinose)
 m830 = pd.read_excel("./M_yeastGEM_v8__46__3__46__0_sub_use.xlsx")
 m900 = pd.read_excel("./yeastGEM_v9__46__0__46__0_sub_use.xlsx")
@@ -71,8 +71,8 @@ if __name__ == '__main__':
     plt.figure(figsize=(8, 6))
     # plt.bar(r1, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
     # plt.bar(r2, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
-    plt.bar(r2, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
-    plt.bar(r1, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
+    plt.bar(r2, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast9')
+    plt.bar(r1, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast8.3.0')
 
     # plt.bar(r1, cover9, width=barWidth, bottom=true9, color='#a4d4b0', edgecolor='white', label='substrates coverd by Yeast9')
     # plt.bar(r2, cover8, width=barWidth, bottom=true8, color='#f6b683', edgecolor='white', label='substrates coverd by Yeast8')
@@ -87,7 +87,7 @@ if __name__ == '__main__':
              'size': 16,
              }
 
-    plt.ylabel('Substrate Number', fontdict=font2)
+    plt.ylabel('Substrate number', fontdict=font2)
     plt.xticks([r + 1.2 *barWidth/2 for r in range(len(sou))],
                ['Carbon', 'Nitrogen', 'Phosphorus', 'Sulfur'],
                fontproperties='Arial', size=26)
