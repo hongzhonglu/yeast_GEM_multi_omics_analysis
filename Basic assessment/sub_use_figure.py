@@ -71,8 +71,8 @@ if __name__ == '__main__':
     plt.figure(figsize=(8, 6))
     # plt.bar(r1, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast 9')
     # plt.bar(r2, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast 8.3')
-    plt.bar(r2, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Truly predicted by Yeast9')
-    plt.bar(r1, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Truly predicted by Yeast8.3.0')
+    plt.bar(r2, true9, width=barWidth, color='#6f9bc6', edgecolor='Black', label='Yeast9')
+    plt.bar(r1, true8, width=barWidth, color='#f3993a', edgecolor='Black', label='Yeast8.3.0')
 
     # plt.bar(r1, cover9, width=barWidth, bottom=true9, color='#a4d4b0', edgecolor='white', label='substrates coverd by Yeast9')
     # plt.bar(r2, cover8, width=barWidth, bottom=true8, color='#f6b683', edgecolor='white', label='substrates coverd by Yeast8')
@@ -84,7 +84,7 @@ if __name__ == '__main__':
              }
     font3 = {'family': 'Arial',
              'weight': 'normal',
-             'size': 16,
+             'size': 20,
              }
 
     plt.ylabel('Substrate number', fontdict=font2)

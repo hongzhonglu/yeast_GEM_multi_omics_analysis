@@ -544,8 +544,8 @@ def prepare_gene_class(n):
                 + [9] * 110 + [10] * 44 + [11] * 35 + [12] * 34 \
                 + [13] * 35
     elif n == 70:
-        #sortedgene = pd.read_excel('../data/SortedFluxGene_70.xlsx')
-        sortedgene = pd.read_excel('../data/SortedFluxGene_70_22.xlsx')
+        sortedgene = pd.read_excel('../data/SortedFluxGene_70.xlsx')
+        #sortedgene = pd.read_excel('../data/SortedFluxGene_70_22.xlsx')
         sortedgene.index = sortedgene.loc[:, 'genes']
         for s in sortedgene.index:
             sortedgene.loc[s, 'orf name'] = geneclass.loc[s, 'orf name']
@@ -609,14 +609,14 @@ if __name__ == '__main__':
     n = 70
     msb = pd.read_csv('../data/msbdata.csv')
     flux = pd.read_csv('../output/Glucose_fluxDataset.csv')
-    sortedgene, lable = prepare_gene_class(n)
-    trans_data = msb.drop(columns=['geneName', 'commonName']).T
-    flux_data = flux.drop(columns=['Var1']).T
-    ml_trans_data = prepare_mldata(sortedgene, trans_data)
-    ml_flux_data = prepare_mldata(sortedgene, flux_data)
-    ft = pd.concat([ml_trans_data, ml_flux_data], axis=1)
-    logging.info('data loaded')
-    run_ml(ml_flux_data, lable, n, 'flux')
-    run_ml(ft, lable, n, 'ft')
-    run_ml(ml_trans_data, lable, n, 'trans')
-    #report = classification_report(y, predictions)
+    # sortedgene, lable = prepare_gene_class(n)
+    # trans_data = msb.drop(columns=['geneName', 'commonName']).T
+    # flux_data = flux.drop(columns=['Var1']).T
+    # ml_trans_data = prepare_mldata(sortedgene, trans_data)
+    # ml_flux_data = prepare_mldata(sortedgene, flux_data)
+    # ft = pd.concat([ml_trans_data, ml_flux_data], axis=1)
+    # logging.info('data loaded')
+    # run_ml(ml_flux_data, lable, n, 'flux')
+    # run_ml(ft, lable, n, 'ft')
+    # run_ml(ml_trans_data, lable, n, 'trans')
+    # #report = classification_report(y, predictions)

@@ -87,7 +87,7 @@ conditionname = ['CN115', 'CN50', 'CN30', 'Phe', 'Ile',
                  'N035', 'N030', 'N018', 'N013',
                  'N010', 'N005', 'Gln']
 
-# choose pFBA or sampling
+# choose pFBA or sample
 allg = 'pFBA'
 
 # get flux and protein data
@@ -134,46 +134,46 @@ all_reaction_slope, all_cc, all_c = get_flux_prot_z(ID, model_fluxdict, protdict
 
 morethan05 = [r for r in all_reaction_slope.index if all_reaction_slope.loc[r, 'p'] > 0.5]
 m05 = pd.DataFrame(morethan05)
-m05.to_csv(r'./output/m05.csv')
+m05.to_csv(r'./output/m05_{}.csv'.format(allg))
 
-carbon_rxn = get_id(['Citrate cycle (TCA cycle)',
-                      'Glycolysis / gluconeogenesis',
-                      'Pentose phosphate pathway',
-                      'Fructose and mannose metabolism',
-                      'Galactose metabolism',
-                      'Ascorbate and aldarate metabolism',
-                      'Starch and sucrose metabolism',
-                      'Amino sugar and nucleotide sugar metabolism',
-                      'Pyruvate metabolism',
-                      'Glyoxylate and dicarboxylate metabolism',
-                      'Propanoate metabolism',
-                      'Butanoate metabolism',
-                      'C5-Branched dibasic acid metabolism',
-                      'Inositol phosphate metabolism'])
-carbon_reaction_slope, carbon_cc, carbon_c = get_flux_prot(carbon_rxn, model_fluxdict, protdict)
-amino_rxn = get_id(['Alanine, aspartate and glutamate metabolism',
-                    'Glycine, serine and threonine metabolism',
-                    'Cysteine and methionine metabolism',
-                    'Valine, leucine and isoleucine metabolism',
-                    'Lysine metabolism',
-                    'Arginine biosynthesis',
-                    'Arginine and proline metabolism',
-                    'Histidine metabolism',
-                    'Tyrosine metabolism',
-                    'Phenylalanine metabolism',
-                    'Tryptophan metabolism',
-                    'Phenylalanine, tyrosine and tryptophan biosynthesis'])
-amino_reaction_slope, amino_cc, amino_c = get_flux_prot(amino_rxn, model_fluxdict, protdict)
-lipid_rxn = get_id(['Glycerophospholipid metabolism',
-                    'Biosynthesis of unsaturated fatty acids',
-                    'Glycerolipid metabolism',
-                    'Steroid biosynthesis',
-                    'Fatty acid biosynthesis',
-                    'Sphingolipid metabolism',
-                    'Arachidonic acid metabolism'])
-lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot(lipid_rxn, model_fluxdict, protdict)
-
-
-reaction_slope = [all_reaction_slope, carbon_reaction_slope,
-                  amino_reaction_slope]
-histogram(reaction_slope)
+# carbon_rxn = get_id(['Citrate cycle (TCA cycle)',
+#                       'Glycolysis / gluconeogenesis',
+#                       'Pentose phosphate pathway',
+#                       'Fructose and mannose metabolism',
+#                       'Galactose metabolism',
+#                       'Ascorbate and aldarate metabolism',
+#                       'Starch and sucrose metabolism',
+#                       'Amino sugar and nucleotide sugar metabolism',
+#                       'Pyruvate metabolism',
+#                       'Glyoxylate and dicarboxylate metabolism',
+#                       'Propanoate metabolism',
+#                       'Butanoate metabolism',
+#                       'C5-Branched dibasic acid metabolism',
+#                       'Inositol phosphate metabolism'])
+# carbon_reaction_slope, carbon_cc, carbon_c = get_flux_prot(carbon_rxn, model_fluxdict, protdict)
+# amino_rxn = get_id(['Alanine, aspartate and glutamate metabolism',
+#                     'Glycine, serine and threonine metabolism',
+#                     'Cysteine and methionine metabolism',
+#                     'Valine, leucine and isoleucine metabolism',
+#                     'Lysine metabolism',
+#                     'Arginine biosynthesis',
+#                     'Arginine and proline metabolism',
+#                     'Histidine metabolism',
+#                     'Tyrosine metabolism',
+#                     'Phenylalanine metabolism',
+#                     'Tryptophan metabolism',
+#                     'Phenylalanine, tyrosine and tryptophan biosynthesis'])
+# amino_reaction_slope, amino_cc, amino_c = get_flux_prot(amino_rxn, model_fluxdict, protdict)
+# lipid_rxn = get_id(['Glycerophospholipid metabolism',
+#                     'Biosynthesis of unsaturated fatty acids',
+#                     'Glycerolipid metabolism',
+#                     'Steroid biosynthesis',
+#                     'Fatty acid biosynthesis',
+#                     'Sphingolipid metabolism',
+#                     'Arachidonic acid metabolism'])
+# lipid_reaction_slope, lipid_cc, lipid_c = get_flux_prot(lipid_rxn, model_fluxdict, protdict)
+#
+#
+# reaction_slope = [all_reaction_slope, carbon_reaction_slope,
+#                   amino_reaction_slope]
+# histogram(reaction_slope)

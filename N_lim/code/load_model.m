@@ -15,9 +15,9 @@ cd ../../yeast-GEM/code/otherChanges/
 % constrain growth, exchange reaction, biomass
 modelNH4_Nlim_01 = scaleBioMass(modelNH4_Nlim_01, 'protein', 0.22557);
 modelNH4_Nlim_01 = scaleBioMass(modelNH4_Nlim_01, 'RNA', 0.0253);
-% fix 90% measured growth rate as lower bound.
-% 110% measured substrate uptake rate as lower bound.
-% 90% measured outflow as lower bound.
+% fix 80% measured growth rate as lower bound.
+% 120% measured substrate uptake rate as lower bound.
+% 80% measured outflow as lower bound.
 modelNH4_Nlim_01 = changeRxnBounds(modelNH4_Nlim_01,	'r_2111',	0.1 * 0.8, 'l');
 modelNH4_Nlim_01 = changeRxnBounds(modelNH4_Nlim_01,	'r_1714',	-exp1e(2,10) * 1.2, 'l');%glucose
 modelNH4_Nlim_01 = changeRxnBounds(modelNH4_Nlim_01,	'r_1654',	-1000, 'l'); 
