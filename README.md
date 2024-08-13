@@ -12,5 +12,5 @@
 `./deletion` is for simulation pconstrained with large-scale transcriptomic.
 
 `./Basic assessment` evaluates GEMs basic fucntion.
-B
+
 `./synthetic_lethal` is for synthetic lethal simulation.
