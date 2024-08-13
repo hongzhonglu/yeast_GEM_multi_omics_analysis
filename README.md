@@ -1,7 +1,7 @@
 # Citation
 
-* If you use yeast-GEM please cite the yeast9 paper:
-  > Zhang, C. et al. _Yeast9: a consensus genome-scale metabolic model for S. cerevisiae curated by the community._ molecular systems biology (2024) doi:[10.1038/s44320-024-00060-7](https://doi.org/10.1038/s44320-024-00060-7)
+* If you use yeast-GEM please cite the yeast9 paper:S
+  > Zhang, C. et al. _Yeast9: a consensus genome-scale metabolic model for S. cerevisiae curated by the community._ Molecular Systems Biology (2024) doi:[10.1038/s44320-024-00060-7](https://doi.org/10.1038/s44320-024-00060-7)
 
 # Code describtion
 
@@ -12,5 +12,5 @@
 `./deletion` is for simulation pconstrained with large-scale transcriptomic.
 
 `./Basic assessment` evaluates GEMs basic fucntion.
-
+B
 `./synthetic_lethal` is for synthetic lethal simulation.
