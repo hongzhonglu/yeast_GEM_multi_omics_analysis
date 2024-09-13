@@ -95,5 +95,5 @@ if __name__ == '__main__':
     plt.tick_params(top=False, bottom=True, left=True, right=False)
     plt.legend(prop=font3)
     plt.tight_layout()
-    plt.savefig('sub_use_SolveCompartmentIssue.tif', dpi=600)
+    plt.savefig('sub_use_SolveCompartmentIssue.tif', dpi=300)
     plt.show()

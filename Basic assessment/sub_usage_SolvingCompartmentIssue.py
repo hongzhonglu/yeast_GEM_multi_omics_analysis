@@ -35,6 +35,7 @@ def add_exchange(model, metid):
         rxn = model_test.add_boundary(met, type="exchange")
     return model_test, rxn
 
+
 def simu(model):
     try:
         sol = model.optimize()
@@ -51,18 +52,18 @@ def simu(model):
 
 biolog = pd.read_table('./Biolog_Substrate.tsv')
 # yeast 9
-# model = cobra.io.read_sbml_model('./yeast-GEM.xml')
+model = cobra.io.read_sbml_model('./yeast-GEM.xml')
 
 # yeast8.3
-model = cobra.io.read_sbml_model("./yeast-GEM-8.3.0/yeast-GEM-8.3.0/ModelFiles/xml/yeastGEM.xml")
+# model = cobra.io.read_sbml_model("./yeast-GEM-8.3.0/yeast-GEM-8.3.0/ModelFiles/xml/yeastGEM.xml")
 exp_simu = pd.DataFrame(columns=['Name_in_Model', 'id', 'Substrate_type', 'Growth_Biolog', 'Growth_Model'])
 for m in model.metabolites:
     if m.compartment == 'c':
         for i in range(len(biolog.index)):
             # This "if" is for yeast8 because the metabolites name is like "name [compartment]"
-            if m.name.split(' [')[0] == biolog.loc[i, 'Name_in_Model']:
+            # if m.name.split(' [')[0] == biolog.loc[i, 'Name_in_Model']:
             # This "if" is for yeast9
-            # if m.name == biolog.loc[i, 'Name_in_Model']:
+            if m.name == biolog.loc[i, 'Name_in_Model']:
                 exp_simu.loc[i, 'id'] = m.id
                 exp_simu.loc[i, 'Substrate_type'] = biolog.loc[i, 'Substrate_type']
                 exp_simu.loc[i, 'Growth_Biolog'] = biolog.loc[i, 'Growth_Biolog']
@@ -75,20 +76,26 @@ if __name__ == '__main__':
     allrxnName = [r.name for r in model.reactions]
     allrxn = [r for r in model.reactions]
     for i in range(len(exp_simu.index)):
-        if exp_simu.loc[i, 'Substrate_type'] != 'S':
-            model_test, rxn = add_exchange(model, exp_simu.loc[i, 'id'])
-            model_final = change_medium(model_test, exp_simu.loc[i, 'Substrate_type'], rxn)
+        exchangeName = str(exp_simu.loc[i, 'Name_in_Model']) + ' exchange'
+        if exchangeName in allrxnName:
+            rxnidx = allrxnName.index(exchangeName)
+            model_final = change_medium(model, exp_simu.loc[i, 'Substrate_type'], allrxn[rxnidx])
             gng = simu(model_final)
             exp_simu.loc[i, 'Growth_Model'] = gng
-        else:
-            try:
-                name = exp_simu.loc[i, 'Name_in_Model'] + ' exchange'
-                rxn = allrxn[allrxnName.index(name)]
-                model_final = change_medium(model, exp_simu.loc[i, 'Substrate_type'], rxn)
-                gng = simu(model_final)
-                exp_simu.loc[i, 'Growth_Model'] = gng
-            except:
-                pass
+        # if exp_simu.loc[i, 'Substrate_type'] != 'S':
+        #     model_test, rxn = add_exchange(model, exp_simu.loc[i, 'id'])
+        #     model_final = change_medium(model_test, exp_simu.loc[i, 'Substrate_type'], rxn)
+        #     gng = simu(model_final)
+        #     exp_simu.loc[i, 'Growth_Model'] = gng
+        # else:
+        #     try:
+        #         name = exp_simu.loc[i, 'Name_in_Model'] + ' exchange'
+        #         rxn = allrxn[allrxnName.index(name)]
+        #         model_final = change_medium(model, exp_simu.loc[i, 'Substrate_type'], rxn)
+        #         gng = simu(model_final)
+        #         exp_simu.loc[i, 'Growth_Model'] = gng
+        #     except:
+        #         pass
     c = 0
     for i in range(len(exp_simu.index)):
         if exp_simu.loc[i, 'Growth_Biolog'] == exp_simu.loc[i, 'Growth_Model']:
