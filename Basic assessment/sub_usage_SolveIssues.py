@@ -101,4 +101,4 @@ if __name__ == '__main__':
         if exp_simu.loc[i, 'Growth_Biolog'] == exp_simu.loc[i, 'Growth_Model']:
             c += 1
 
-    exp_simu.to_excel('./{}_sub_use_SolveCompartmentIssue.xlsx'.format(model.id))
+    exp_simu.to_excel('./{}_sub_use_SolveIssues.xlsx'.format(model.id))

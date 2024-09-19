@@ -1,8 +1,8 @@
 import pandas as pd
 import numpy as np
 # remove repeated metabolites (acetate, raffinose)
-m830 = pd.read_excel("./M_yeastGEM_v8__46__3__46__0_sub_use_SolveCompartmentIssue.xlsx")
-m900 = pd.read_excel("./yeastGEM_v9__46__0__46__0_sub_use_SolveCompartmentIssue.xlsx")
+m830 = pd.read_excel("./M_yeastGEM_v8__46__3__46__0_sub_use_SolveIssues.xlsx")
+m900 = pd.read_excel("./yeastGEM_v9__46__0__46__0_sub_use_SolveIssues.xlsx")
 dataset = pd.read_table("./Biolog_Substrate.tsv")
 
 def source(data, s):
@@ -95,5 +95,5 @@ if __name__ == '__main__':
     plt.tick_params(top=False, bottom=True, left=True, right=False)
     plt.legend(prop=font3)
     plt.tight_layout()
-    plt.savefig('sub_use_SolveCompartmentIssue.tif', dpi=300)
+    plt.savefig('sub_use_SolveIssues.tif', dpi=300)
     plt.show()
